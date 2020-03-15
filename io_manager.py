@@ -42,3 +42,11 @@ class IOManager:
         userLastName = input('Enter last name: ')
 
         return userEmail, userPassword, userFirstName, userLastName
+
+
+    def gatherEmail(self):
+        return input('Enter email: ')
+
+
+    def gatherPassword(self):
+        return input('Enter password: ')

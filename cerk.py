@@ -12,12 +12,18 @@ class Cerk:
 
 
     def start(self):
+        if self.users == []:
+            self.createAccount()
+            print()
+
         while True:
-            userAction = self.ioManager.handleMenuInput('Enter Action', 'Action #', 'Create Account', 'Exit')
+            userAction = self.ioManager.handleMenuInput('Enter Action', 'Action #', 'Create Account', 'Login', 'Exit')
 
             if userAction == 1:
                 self.createAccount()
             elif userAction == 2:
+                self.login()
+            elif userAction == 3:
                 return
 
             print()
@@ -34,3 +40,22 @@ class Cerk:
         newUser = User(userEmail, userPassword, userFirstName, userLastName)
         self.users.append(newUser)
         self.dataManager.saveUsers(self.users)
+
+
+    def login(self):
+        userEmail = self.ioManager.gatherEmail()
+        foundUser = -1
+        for user in self.users:
+            if user.email == userEmail:
+                foundUser = user
+                break
+        if foundUser == -1:
+            self.ioManager.displayErrorMessage('Could not find account associated with provided email')
+            return False
+
+        userPassword = self.ioManager.gatherPassword()
+        if foundUser.password == userPassword:
+            return True
+        else:
+            self.ioManager.displayErrorMessage('Password incorrect for provided email')
+            return False
