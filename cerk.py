@@ -1,6 +1,7 @@
 from data_manager import DataManager
 from io_manager import IOManager
 from user import User
+import sys
 
 
 class Cerk:
@@ -10,6 +11,8 @@ class Cerk:
         self.users = self.dataManager.loadUsers()
         self.ioManager = IOManager()
 
+        self.activeNav = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},{'Filler': self.filler}]
+        self.activeNavIndex = 0
 
     def start(self):
         if self.users == []:
@@ -17,14 +20,9 @@ class Cerk:
             print()
 
         while True:
-            userAction = self.ioManager.handleMenuInput('Enter Action', 'Action #', 'Create Account', 'Login', 'Exit')
+            userAction = self.ioManager.handleMenuInput(*self.activeNav[self.activeNavIndex].keys())
 
-            if userAction == 1:
-                self.createAccount()
-            elif userAction == 2:
-                self.login()
-            elif userAction == 3:
-                return
+            self.activeNavIndex = list(self.activeNav[self.activeNavIndex].values())[userAction - 1]()
 
             print()
 
@@ -41,6 +39,8 @@ class Cerk:
         self.users.append(newUser)
         self.dataManager.saveUsers(self.users)
 
+        return self.activeNavIndex
+
 
     def login(self):
         userEmail = self.ioManager.gatherEmail()
@@ -55,7 +55,17 @@ class Cerk:
 
         userPassword = self.ioManager.gatherPassword()
         if foundUser.password == userPassword:
-            return True
+            return 1
         else:
             self.ioManager.displayErrorMessage('Password incorrect for provided email')
-            return False
+            return self.activeNavIndex
+
+
+    def filler(self):
+        print('Replace me')
+
+        return self.activeNavIndex
+
+
+    def stop(self):
+        sys.exit()

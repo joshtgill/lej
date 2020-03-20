@@ -1,7 +1,7 @@
 class IOManager:
 
-    def handleMenuInput(self, title, prompt, *options):
-        print('{} -'.format(title))
+    def handleMenuInput(self, *options):
+        print('Enter action -')
 
         i = 1
         for option in options:
@@ -9,7 +9,7 @@ class IOManager:
             i += 1
         print()
 
-        userAction = self.handleNumberInput(prompt, 1, len(options))
+        userAction = self.handleNumberInput('Action #', 1, len(options))
 
         print()
 
