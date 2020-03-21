@@ -11,7 +11,8 @@ class Cerk:
         self.users = self.dataManager.loadUsers()
         self.ioManager = IOManager()
 
-        self.activeNav = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},{'Filler': self.filler}]
+        self.activeNav = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
+                          {'Logout': self.logout}]
         self.activeNavIndex = 0
 
     def start(self):
@@ -32,7 +33,7 @@ class Cerk:
 
         for user in self.users:
             if user.email == userEmail:
-                this.ioManager.displayErrorMessage('Email already in use')
+                self.ioManager.displayErrorMessage('Email already in use')
                 return
 
         newUser = User(userEmail, userPassword, userFirstName, userLastName)
@@ -61,10 +62,8 @@ class Cerk:
             return self.activeNavIndex
 
 
-    def filler(self):
-        print('Replace me')
-
-        return self.activeNavIndex
+    def logout(self):
+        return self.activeNavIndex - 1
 
 
     def stop(self):
