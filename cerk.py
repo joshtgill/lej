@@ -8,62 +8,55 @@ class Cerk:
 
     def __init__(self):
         self.dataManager = DataManager('data.json')
-        self.users = self.dataManager.loadUsers()
         self.ioManager = IOManager()
 
-        self.activeNav = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
-                          {'Logout': self.logout}]
-        self.activeNavIndex = 0
+        self.navigation = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
+                           {'Logout': self.logout}]
+        self.navigationIndex = 0
+
 
     def start(self):
-        if self.users == []:
-            self.createAccount()
-            print()
-
         while True:
-            userAction = self.ioManager.handleMenuInput(*self.activeNav[self.activeNavIndex].keys())
-
-            self.activeNavIndex = list(self.activeNav[self.activeNavIndex].values())[userAction - 1]()
+            userAction = self.ioManager.handleMenuInput(*self.navigation[self.navigationIndex].keys())
+            self.navigationIndex = list(self.navigation[self.navigationIndex].values())[userAction - 1]()
 
             print()
 
 
     def createAccount(self):
-        userEmail, userPassword, userFirstName, userLastName = self.ioManager.gatherCreateAccountInfo()
-
-        for user in self.users:
+        userEmail = self.ioManager.gatherEmail()
+        for user in self.dataManager.getObjectList('users', User):
             if user.email == userEmail:
-                self.ioManager.displayErrorMessage('Email already in use')
-                return
+                self.ioManager.displayErrorMessage('Email already in use.')
+                return self.navigationIndex
 
-        newUser = User(userEmail, userPassword, userFirstName, userLastName)
-        self.users.append(newUser)
-        self.dataManager.saveUsers(self.users)
+        newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
+        self.dataManager.appendData('users', newUser)
 
-        return self.activeNavIndex
+        return self.navigationIndex
 
 
     def login(self):
         userEmail = self.ioManager.gatherEmail()
-        foundUser = -1
-        for user in self.users:
+        foundUser = None
+        for user in self.dataManager.getObjectList('users', User):
             if user.email == userEmail:
                 foundUser = user
                 break
-        if foundUser == -1:
-            self.ioManager.displayErrorMessage('Could not find account associated with provided email')
-            return False
+        if foundUser == None:
+            self.ioManager.displayErrorMessage('Could not find account associated with provided email.')
+            return self.navigationIndex
 
         userPassword = self.ioManager.gatherPassword()
         if foundUser.password == userPassword:
-            return 1
+            return self.navigationIndex + 1
         else:
-            self.ioManager.displayErrorMessage('Password incorrect for provided email')
-            return self.activeNavIndex
+            self.ioManager.displayErrorMessage('Password incorrect for provided email.')
+            return self.navigationIndex
 
 
     def logout(self):
-        return self.activeNavIndex - 1
+        return self.navigationIndex - 1
 
 
     def stop(self):

@@ -10,7 +10,6 @@ class IOManager:
         print()
 
         userAction = self.handleNumberInput('Action #', 1, len(options))
-
         print()
 
         return userAction
@@ -22,26 +21,17 @@ class IOManager:
             try:
                 userNumber = int(userInput)
             except ValueError:
-                self.displayErrorMessage('Input must be a number')
+                self.displayErrorMessage('Input must be a number.')
                 continue
 
             if userNumber > maxNumber or userNumber < minNumber:
-                self.displayErrorMessage('Input must be between {}-{}'.format(minNumber, maxNumber))
+                self.displayErrorMessage('Input must be between {}-{}.'.format(minNumber, maxNumber))
             else:
                 return userNumber
 
 
     def displayErrorMessage(self, message):
-        print('ERROR: {}.'.format(message))
-
-
-    def gatherCreateAccountInfo(self):
-        userEmail = input('Enter email: ')
-        userPassword = input('Enter password: ')
-        userFirstName = input('Enter first name: ')
-        userLastName = input('Enter last name: ')
-
-        return userEmail, userPassword, userFirstName, userLastName
+        print('\nERROR: {}'.format(message))
 
 
     def gatherEmail(self):
@@ -50,3 +40,11 @@ class IOManager:
 
     def gatherPassword(self):
         return input('Enter password: ')
+
+
+    def gatherFirstName(self):
+        return input('Enter first name: ')
+
+
+    def gatherLastName(self):
+        return input('Enter last name: ')

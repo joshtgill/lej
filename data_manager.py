@@ -1,5 +1,6 @@
 import json
 from user import User
+from io_manager import IOManager
 
 
 class DataManager:
@@ -7,48 +8,36 @@ class DataManager:
     def __init__(self, dataFileName):
         self.dataFileName = dataFileName
 
+        self.ioManager = IOManager()
+        self.data = self.loadData()
 
-    def saveUsers(self, users):
+
+    def saveData(self):
         with open(self.dataFileName, 'w+') as dataFile:
-            json.dump(self.serializeUsers(users), dataFile)
+            json.dump(self.data, dataFile)
 
 
-    def serializeUsers(self, users):
-        usersData = []
-        for user in users:
-            userData = {}
-            for userClassMember in self.retrieveClassMembers(user):
-                execStr = 'userData["{}"] = user.{}'.format(userClassMember, userClassMember)
-                exec(execStr)
-            usersData.append(userData)
-
-        return usersData
-
-
-    def loadUsers(self):
+    def loadData(self):
+        data = {}
         try:
             with open(self.dataFileName, 'r') as dataFile:
-                return self.deserializeUsersData(json.loads(dataFile.read()))
+                data = json.loads(dataFile.read())
         except FileNotFoundError:
-            return []
+            pass
+
+        return data
 
 
-    def deserializeUsersData(self, usersData):
-        users = []
-        for userData in usersData:
-            user = User()
-            for userClassMember in self.retrieveClassMembers(User()):
-                execStr = 'user.{} = userData["{}"]'.format(userClassMember, userClassMember)
-                exec(execStr)
-            users.append(user)
-
-        return users
+    def appendData(self, path, data):
+        self.data[path].append(data.serialize())
+        self.saveData()
 
 
-    def retrieveClassMembers(self, obj):
-        classMembers = []
-        for attribute in dir(obj):
-            if not attribute.startswith('__') and not callable(getattr(obj, attribute)):
-                classMembers.append(attribute)
+    def getObjectList(self, path, objectType):
+        objectList = []
+        for data in self.data[path]:
+            objectt = objectType()
+            objectt.deserialize(data)
+            objectList.append(objectt)
 
-        return classMembers
+        return objectList

@@ -5,3 +5,14 @@ class User:
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
+
+
+    def serialize(self):
+        return { 'email': self.email, 'password': self.password, 'firstName': self.firstName, 'lastName': self.lastName }
+
+
+    def deserialize(self, data):
+        self.email = data['email']
+        self.password = data['password']
+        self.firstName = data['firstName']
+        self.lastName = data['lastName']
