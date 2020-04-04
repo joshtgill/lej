@@ -10,9 +10,12 @@ class Cerk:
         self.localDb = DataManager('local_data.json')
         self.cerkDb = DataManager('cerk_data.json')
         self.ioManager = IOManager()
+        self.user = None
         self.menuDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
                               {'Logout': self.logout}]
         self.menuIndex = 0
+
+        self.menuIndex = self.tryAutoLogin()
 
 
     def start(self):
@@ -33,7 +36,7 @@ class Cerk:
                 return self.menuIndex
 
         newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
-        self.cerkDb.update('users', newUser, True)
+        self.cerkDb.update('users/{}'.format(newUser.uuid), newUser)
 
         return self.menuIndex
 
@@ -41,8 +44,8 @@ class Cerk:
     def login(self):
         userEmail = self.ioManager.gatherEmail()
         foundUser = None
-        self.cerkDb.query('users', User)
-        for user in self.cerkDb.query('users', User):
+        for uuid in self.cerkDb.query('users', None):
+            user = self.cerkDb.query('users/{}'.format(uuid), User)
             if user.email == userEmail:
                 foundUser = user
                 break
@@ -57,10 +60,26 @@ class Cerk:
 
             return self.menuIndex
 
+        self.user = foundUser
+        self.localDb.update('uuid', str(foundUser.uuid))
+
         return self.menuIndex + 1
 
 
+    def tryAutoLogin(self):
+        uuid = self.localDb.query('uuid')
+        if uuid == []:
+            return self.menuIndex
+        else:
+            self.user = self.cerkDb.query('users/uuid', User)
+
+            return self.menuIndex + 1
+
+
     def logout(self):
+        self.localDb.data = {}
+        self.localDb.save()
+
         return self.menuIndex - 1
 
 
