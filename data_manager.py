@@ -1,13 +1,11 @@
 import json
 from user import User
-from io_manager import IOManager
 
 
 class DataManager:
 
     def __init__(self, dataFileName):
         self.dataFileName = dataFileName
-        self.ioManager = IOManager()
         self.data = self.load()
 
 
@@ -20,7 +18,9 @@ class DataManager:
         data = {}
         try:
             with open(self.dataFileName, 'r') as dataFile:
-                data = json.loads(dataFile.read())
+                dataStr = dataFile.read()
+                if dataStr:
+                    data = json.loads(dataStr)
         except FileNotFoundError:
             pass
 
@@ -37,9 +37,14 @@ class DataManager:
         # Traverse data down path, creating keys if necessary
         dataRunner = self.data
         for pathItem in pathList:
-            if pathItem not in dataRunner:
-                dataRunner.update({pathItem: {}})
-            dataRunner = dataRunner.get(pathItem)
+            if '[' in pathItem:
+                index = int(pathItem[pathItem.find('[') + 1 : pathItem.find(']')])
+                pathItem = pathItem[0 : pathItem.index('[')]
+                dataRunner = dataRunner.get(pathItem)[index]
+            else:
+                if pathItem not in dataRunner:
+                    dataRunner.update({pathItem: {}})
+                dataRunner = dataRunner.get(pathItem)
 
         # Attempt to serialize value
         try:
@@ -47,7 +52,7 @@ class DataManager:
         except AttributeError:
             pass
 
-        # Append or set value depending on type
+        # Append or set value
         if append:
             if dataRunner == {}:
                 dataRunner.update({key: []})
@@ -66,9 +71,14 @@ class DataManager:
         # Traverse data down path
         dataRunner = self.data
         for pathItem in pathList:
-            dataRunner = dataRunner.get(pathItem)
+            if '[' in pathItem:
+                index = int(pathItem[pathItem.find('[') + 1:pathItem.find(']')])
+                pathItem = pathItem[0 : pathItem.index('[')]
+                dataRunner = dataRunner.get(pathItem)[index]
+            else:
+                dataRunner = dataRunner.get(pathItem)
 
-        # If None, the assume attempting to append to empty list
+        # If None, then assume value is an empty list
         if dataRunner == None:
             return []
 
