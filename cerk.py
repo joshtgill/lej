@@ -10,16 +10,26 @@ class Cerk:
         self.localDb = DataManager('local_data.json')
         self.cerkDb = DataManager('cerk_data.json')
         self.ioManager = IOManager()
+
         self.user = None
         self.menuDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
-                              {'Logout': self.logout}]
-        self.menuIndex = 0
-
+                              {'View profile': self.viewProfile, 'Logout': self.logout, 'Exit': self.stop}]
         self.menuIndex = self.tryAutoLogin()
 
 
+    def tryAutoLogin(self):
+        # If uuid exists, login with corresponding account
+        uuid = self.localDb.query('uuid')
+        if uuid != []:
+            self.user = self.cerkDb.query('users/{}'.format(uuid), User)
+
+            return 1
+
+        return 0
+
+
     def start(self):
-        # Display active menu and handle selection
+        # Display active menu and handle the selection
         while True:
             userSelection = self.ioManager.handleMenuInput(*self.menuDirectory[self.menuIndex].keys())
             self.menuIndex = list(self.menuDirectory[self.menuIndex].values())[userSelection - 1]()
@@ -28,6 +38,7 @@ class Cerk:
 
 
     def createAccount(self):
+        # Retrieve email and verify it doesn't exist in db
         userEmail = self.ioManager.gatherEmail()
         for user in self.cerkDb.query('users', User):
             if user.email == userEmail:
@@ -35,6 +46,7 @@ class Cerk:
 
                 return self.menuIndex
 
+        # Create new user and write to db
         newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
         self.cerkDb.update('users/{}'.format(newUser.uuid), newUser)
 
@@ -42,6 +54,7 @@ class Cerk:
 
 
     def login(self):
+        # Retrieve email and verify if exists
         userEmail = self.ioManager.gatherEmail()
         foundUser = None
         for uuid in self.cerkDb.query('users', None):
@@ -54,29 +67,29 @@ class Cerk:
 
             return self.menuIndex
 
+        # Retrieve password and verify it matches with email
         userPassword = self.ioManager.gatherPassword()
         if foundUser.password != userPassword:
             self.ioManager.displayErrorMessage('Password incorrect for provided email.')
 
             return self.menuIndex
 
+        # Update user and save login
         self.user = foundUser
         self.localDb.update('uuid', str(foundUser.uuid))
 
         return self.menuIndex + 1
 
 
-    def tryAutoLogin(self):
-        uuid = self.localDb.query('uuid')
-        if uuid == []:
-            return self.menuIndex
-        else:
-            self.user = self.cerkDb.query('users/uuid', User)
+    def viewProfile(self):
+        # Display user data
+        self.ioManager.displayUserProfile(self.user)
 
-            return self.menuIndex + 1
+        return self.menuIndex
 
 
     def logout(self):
+        # Wipe saved login
         self.localDb.data = {}
         self.localDb.save()
 

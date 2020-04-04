@@ -34,6 +34,12 @@ class IOManager:
         print('\nERROR: {}'.format(message))
 
 
+    def displayUserProfile(self, user):
+        print('Name: {} {}'.format(user.firstName, user.lastName))
+        print('Email: {}'.format(user.email))
+        print('Password: {}'.format(user.password))
+
+
     def gatherEmail(self):
         return input('Enter email: ')
 
