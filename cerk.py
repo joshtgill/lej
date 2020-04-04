@@ -10,16 +10,16 @@ class Cerk:
         self.localDb = DataManager('local_data.json')
         self.cerkDb = DataManager('cerk_data.json')
         self.ioManager = IOManager()
-
-        self.navigation = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
-                           {'Logout': self.logout}]
-        self.navigationIndex = 0
+        self.menuDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
+                              {'Logout': self.logout}]
+        self.menuIndex = 0
 
 
     def start(self):
+        # Display active menu and handle selection
         while True:
-            userAction = self.ioManager.handleMenuInput(*self.navigation[self.navigationIndex].keys())
-            self.navigationIndex = list(self.navigation[self.navigationIndex].values())[userAction - 1]()
+            userSelection = self.ioManager.handleMenuInput(*self.menuDirectory[self.menuIndex].keys())
+            self.menuIndex = list(self.menuDirectory[self.menuIndex].values())[userSelection - 1]()
 
             print()
 
@@ -29,12 +29,13 @@ class Cerk:
         for user in self.cerkDb.query('users', User):
             if user.email == userEmail:
                 self.ioManager.displayErrorMessage('Email already in use.')
-                return self.navigationIndex
+
+                return self.menuIndex
 
         newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
         self.cerkDb.update('users', newUser, True)
 
-        return self.navigationIndex
+        return self.menuIndex
 
 
     def login(self):
@@ -47,18 +48,20 @@ class Cerk:
                 break
         if foundUser == None:
             self.ioManager.displayErrorMessage('Could not find account associated with provided email.')
-            return self.navigationIndex
+
+            return self.menuIndex
 
         userPassword = self.ioManager.gatherPassword()
         if foundUser.password != userPassword:
             self.ioManager.displayErrorMessage('Password incorrect for provided email.')
-            return self.navigationIndex
 
-        return self.navigationIndex + 1
+            return self.menuIndex
+
+        return self.menuIndex + 1
 
 
     def logout(self):
-        return self.navigationIndex - 1
+        return self.menuIndex - 1
 
 
     def stop(self):
