@@ -4,11 +4,11 @@ from user import User
 import sys
 
 
-class Cerk:
+class Lej:
 
     def __init__(self):
         self.localDb = DataManager('local_data.json')
-        self.cerkDb = DataManager('cerk_data.json')
+        self.lejDb = DataManager('lej_data.json')
         self.ioManager = IOManager()
 
         self.user = None
@@ -21,7 +21,7 @@ class Cerk:
         # If uuid exists, login with corresponding account
         uuid = self.localDb.query('uuid')
         if uuid != []:
-            self.user = self.cerkDb.query('users/{}'.format(uuid), User)
+            self.user = self.lejDb.query('users/{}'.format(uuid), User)
 
             return 1
 
@@ -40,7 +40,7 @@ class Cerk:
     def createAccount(self):
         # Retrieve email and verify it doesn't exist in db
         userEmail = self.ioManager.gatherEmail()
-        for user in self.cerkDb.query('users', User):
+        for user in self.lejDb.query('users', User):
             if user.email == userEmail:
                 self.ioManager.displayErrorMessage('Email already in use.')
 
@@ -48,7 +48,7 @@ class Cerk:
 
         # Create new user and write to db
         newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
-        self.cerkDb.update('users/{}'.format(newUser.uuid), newUser)
+        self.lejDb.update('users/{}'.format(newUser.uuid), newUser)
 
         return self.menuIndex
 
@@ -57,8 +57,8 @@ class Cerk:
         # Retrieve email and verify if exists
         userEmail = self.ioManager.gatherEmail()
         foundUser = None
-        for uuid in self.cerkDb.query('users', None):
-            user = self.cerkDb.query('users/{}'.format(uuid), User)
+        for uuid in self.lejDb.query('users', None):
+            user = self.lejDb.query('users/{}'.format(uuid), User)
             if user.email == userEmail:
                 foundUser = user
                 break

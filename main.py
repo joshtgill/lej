@@ -1,5 +1,5 @@
-from cerk import Cerk
+from lej import Lej
 
 
 if __name__ == "__main__":
-    Cerk().start()
+    Lej().start()
