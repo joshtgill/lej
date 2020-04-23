@@ -1,6 +1,6 @@
 import os
 import json
-from user import User
+from structures.user import User
 
 
 class DataManager:

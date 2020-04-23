@@ -1,7 +1,7 @@
 from managers.data_manager import DataManager
 from managers.account_manager import AccountManager
 from managers.io_manager import IOManager
-from user import User
+from structures.user import User
 import sys
 
 
@@ -16,7 +16,7 @@ class Lej:
 
         # Define the application's navigation, where each element represents a navigation grouping.
         self.navDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
-                              {'View profile': self.viewProfile, 'Logout': self.logout, 'Exit': self.stop}]
+                              {'View profile': self.viewProfile, 'View active courses': self.viewActiveCourses, 'Logout': self.logout, 'Exit': self.stop}]
         self.navIndex = 1 if self.accountManager.autoLogin() else 0
 
 
@@ -50,7 +50,13 @@ class Lej:
 
 
     def viewProfile(self):
-        self.accountManager.viewProfile()
+        self.ioManager.displayProfile(self.accountManager.user)
+
+        return self.navIndex
+
+
+    def viewActiveCourses(self):
+        self.ioManager.displayActiveCourses(self.accountManager.user)
 
         return self.navIndex
 

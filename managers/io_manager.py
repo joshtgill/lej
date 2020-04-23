@@ -47,3 +47,8 @@ class IOManager:
         print('Name: {} {}'.format(user.firstName, user.lastName))
         print('Email: {}'.format(user.email))
         print('Password: {}'.format(user.password))
+
+
+    def displayActiveCourses(self, user):
+        for course in user.activeTerm.courses:
+            print('[{} {}] {} - credits: {}, grade: {}'.format(course.subject, course.number, course.title, course.credits, course.letterGrade))

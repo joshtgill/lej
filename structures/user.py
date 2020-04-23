@@ -1,14 +1,16 @@
 import uuid
+from structures.term import Term
 
 
 class User:
 
     def __init__(self, email = '', password = '', firstName = '', lastName = ''):
+        self.uuid = uuid.uuid4()
         self.email = email
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
-        self.uuid = uuid.uuid4()
+        self.activeTerm = Term()
 
 
     def serialize(self):
@@ -16,7 +18,8 @@ class User:
 
 
     def deserialize(self, data):
-        self.email = data['email']
-        self.password = data['password']
-        self.firstName = data['firstName']
-        self.lastName = data['lastName']
+        self.email = data.get('email')
+        self.password = data.get('password')
+        self.firstName = data.get('firstName')
+        self.lastName = data.get('lastName')
+        self.activeTerm.deserialize(data.get('activeTerm'))

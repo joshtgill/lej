@@ -1,4 +1,4 @@
-from user import User
+from structures.user import User
 
 
 class AccountManager:
@@ -78,11 +78,3 @@ class AccountManager:
         self.localDb.update('', {})
 
         return True
-
-
-    def viewProfile(self):
-        self.ioManager.displayProfile(self.user)
-
-        return True
-
-
