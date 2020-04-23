@@ -1,5 +1,10 @@
 class IOManager:
 
+    def println(self, numLines=1):
+        for line in range(numLines):
+            print()
+
+
     def handleMenuInput(self, *options):
         print('Enter selection -')
 
@@ -30,27 +35,15 @@ class IOManager:
                 return userNumber
 
 
+    def gatherInput(self, prompt):
+        return input(prompt)
+
+
     def displayErrorMessage(self, message):
         print('\nERROR: {}'.format(message))
 
 
-    def displayUserProfile(self, user):
+    def displayProfile(self, user):
         print('Name: {} {}'.format(user.firstName, user.lastName))
         print('Email: {}'.format(user.email))
         print('Password: {}'.format(user.password))
-
-
-    def gatherEmail(self):
-        return input('Enter email: ')
-
-
-    def gatherPassword(self):
-        return input('Enter password: ')
-
-
-    def gatherFirstName(self):
-        return input('Enter first name: ')
-
-
-    def gatherLastName(self):
-        return input('Enter last name: ')

@@ -1,3 +1,4 @@
+import os
 import json
 from user import User
 
@@ -10,6 +11,9 @@ class DataManager:
 
 
     def save(self):
+        if not os.path.exists('data'):
+            os.makedirs('data')
+
         with open(self.dataFileName, 'w+') as dataFile:
             json.dump(self.data, dataFile)
 
@@ -18,6 +22,7 @@ class DataManager:
         data = {}
         try:
             with open(self.dataFileName, 'r') as dataFile:
+                # Make sure data file is not empty
                 dataStr = dataFile.read()
                 if dataStr:
                     data = json.loads(dataStr)
@@ -54,11 +59,19 @@ class DataManager:
 
         # Append or set value
         if append:
-            if dataRunner == {}:
-                dataRunner.update({key: []})
-            dataRunner.get(key).append(value)
+            if key == '':
+                if dataRunner == {}:
+                    self.data = []
+                self.data.append(value)
+            else:
+                if dataRunner == {}:
+                    dataRunner.update({key: []})
+                dataRunner.get(key).append(value)
         else:
-            dataRunner.update({key: value})
+            if key == '':
+                self.data = value
+            else:
+                dataRunner.update({key: value})
 
         # Save updated data
         self.save()

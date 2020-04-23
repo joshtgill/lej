@@ -1,5 +1,6 @@
-from data_manager import DataManager
-from io_manager import IOManager
+from managers.data_manager import DataManager
+from managers.account_manager import AccountManager
+from managers.io_manager import IOManager
 from user import User
 import sys
 
@@ -7,93 +8,57 @@ import sys
 class Lej:
 
     def __init__(self):
-        self.localDb = DataManager('local_data.json')
-        self.lejDb = DataManager('lej_data.json')
+        # Various managers to be used and injected throughout application.
+        self.localDb = DataManager('data/local_db.json')
+        self.lejDb = DataManager('data/lej_db.json')
         self.ioManager = IOManager()
+        self.accountManager = AccountManager(self.localDb, self.lejDb, self.ioManager)
 
-        self.user = None
-        self.menuDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
+        # Define the application's navigation, where each element represents a navigation grouping.
+        self.navDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
                               {'View profile': self.viewProfile, 'Logout': self.logout, 'Exit': self.stop}]
-        self.menuIndex = self.tryAutoLogin()
-
-
-    def tryAutoLogin(self):
-        # If uuid exists, login with corresponding account
-        uuid = self.localDb.query('uuid')
-        if uuid != []:
-            self.user = self.lejDb.query('users/{}'.format(uuid), User)
-
-            return 1
-
-        return 0
+        self.navIndex = 1 if self.accountManager.autoLogin() else 0
 
 
     def start(self):
-        # Display active menu and handle the selection
+        # Display active navigation group and handle the selection
         while True:
-            userSelection = self.ioManager.handleMenuInput(*self.menuDirectory[self.menuIndex].keys())
-            self.menuIndex = list(self.menuDirectory[self.menuIndex].values())[userSelection - 1]()
+            userSelection = self.ioManager.handleMenuInput(*self.navDirectory[self.navIndex].keys())
+            self.navIndex = list(self.navDirectory[self.navIndex].values())[userSelection - 1]()
 
-            print()
+            self.ioManager.println()
 
 
     def createAccount(self):
-        # Retrieve email and verify it doesn't exist in db
-        userEmail = self.ioManager.gatherEmail()
-        for user in self.lejDb.query('users', User):
-            if user.email == userEmail:
-                self.ioManager.displayErrorMessage('Email already in use.')
+        result = self.accountManager.createAccount()
+        if result:
+            self.ioManager.println()
 
-                return self.menuIndex
+            return self.navIndex + 1
 
-        # Create new user and write to db
-        newUser = User(userEmail, self.ioManager.gatherPassword(), self.ioManager.gatherFirstName(), self.ioManager.gatherLastName())
-        self.lejDb.update('users/{}'.format(newUser.uuid), newUser)
-
-        return self.menuIndex
+        return self.navIndex
 
 
     def login(self):
-        # Retrieve email and verify if exists
-        userEmail = self.ioManager.gatherEmail()
-        foundUser = None
-        for uuid in self.lejDb.query('users', None):
-            user = self.lejDb.query('users/{}'.format(uuid), User)
-            if user.email == userEmail:
-                foundUser = user
-                break
-        if foundUser == None:
-            self.ioManager.displayErrorMessage('Could not find account associated with provided email.')
+        result = self.accountManager.login()
+        if result:
+            self.ioManager.println()
 
-            return self.menuIndex
+            return self.navIndex + 1
 
-        # Retrieve password and verify it matches with email
-        userPassword = self.ioManager.gatherPassword()
-        if foundUser.password != userPassword:
-            self.ioManager.displayErrorMessage('Password incorrect for provided email.')
-
-            return self.menuIndex
-
-        # Update user and save login
-        self.user = foundUser
-        self.localDb.update('uuid', str(foundUser.uuid))
-
-        return self.menuIndex + 1
+        return self.navIndex
 
 
     def viewProfile(self):
-        # Display user data
-        self.ioManager.displayUserProfile(self.user)
+        self.accountManager.viewProfile()
 
-        return self.menuIndex
+        return self.navIndex
 
 
     def logout(self):
-        # Wipe saved login
-        self.localDb.data = {}
-        self.localDb.save()
+        self.accountManager.logout()
 
-        return self.menuIndex - 1
+        return self.navIndex - 1
 
 
     def stop(self):

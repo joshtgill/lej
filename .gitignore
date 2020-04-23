@@ -1,5 +1,6 @@
-# Python cache
+# Python files
 __pycache__/
+__init__.py
 
-# Data files
+# JSON files
 *.json
