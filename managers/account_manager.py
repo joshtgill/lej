@@ -43,9 +43,10 @@ class AccountManager:
 
             return False
 
-        # Update user and locally save login
-        self.user = foundUser
+        # Locally save login
         self.localDb.update('uuid', str(foundUuid))
+
+        self.user = foundUser
 
         return True
 
@@ -64,7 +65,9 @@ class AccountManager:
         newUser = User(userEmail, self.ioManager.gatherInput('Enter password: '), self.ioManager.gatherInput('Enter first name: '), self.ioManager.gatherInput('Enter last name: '))
         self.lejDb.update('users/{}'.format(newUser.uuid), newUser)
 
-        # Automatically login new user
+        # Locally save login
+        self.localDb.update('uuid', str(newUser.uuid))
+
         self.user = newUser
 
         return True
