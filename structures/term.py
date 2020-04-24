@@ -1,4 +1,4 @@
-from structures.active_course import ActiveCourse
+from structures.past_course import PastCourse
 
 
 class Term:
@@ -6,13 +6,17 @@ class Term:
     def __init__(self):
         self.semester = ''
         self.year = 0
-        self.activeCourses = []
+        self.courses = []
+
+
+    def getTitle(self):
+        return '{} {}'.format(self.semester, self.year)
 
 
     def deserialize(self, data):
         self.semester = data.get('semester')
         self.year = int(data.get('year'))
-        for activeCourseData in data.get('activeCourses'):
-            activeCourse = ActiveCourse()
-            activeCourse.deserialize(activeCourseData)
-            self.activeCourses.append(activeCourse)
+        for pastCourseData in data.get('courses'):
+            pastCourse = PastCourse()
+            pastCourse.deserialize(pastCourseData)
+            self.courses.append(pastCourse)

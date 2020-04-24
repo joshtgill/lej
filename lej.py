@@ -17,7 +17,7 @@ class Lej:
         # Define the application's navigation, where each element represents a navigation grouping.
         self.navDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},
                               {'View profile': self.viewProfile, 'View courses': self.viewCourses, 'Logout': self.logout, 'Exit': self.stop},
-                              {'View transferred courses': self.viewTransferredCourses, 'View active courses': self.viewActiveCourses, 'Back': self.back}]
+                              {'View transferred courses': self.viewTransferredCourses, 'View past courses': self.viewPastCourses, 'Back': self.back}]
         self.navIndex = 1 if self.accountManager.autoLogin() else 0
 
 
@@ -66,8 +66,8 @@ class Lej:
         return self.navIndex
 
 
-    def viewActiveCourses(self):
-        self.ioManager.displayActiveCourses(self.accountManager.user)
+    def viewPastCourses(self):
+        self.ioManager.displayPastCourses(self.accountManager.user)
 
         return self.navIndex
 

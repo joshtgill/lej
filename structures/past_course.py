@@ -1,7 +1,7 @@
 from structures.course import Course
 
 
-class ActiveCourse(Course):
+class PastCourse(Course):
 
     def __init__(self):
         self.letterGrade = ''

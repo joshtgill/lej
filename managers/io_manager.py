@@ -55,7 +55,9 @@ class IOManager:
                                                                 transferredCourse.title, transferredCourse.units))
 
 
-    def displayActiveCourses(self, user):
-        for activeCourse in user.activeTerm.activeCourses:
-            print('[{} {}] {} - units: {}, grade: {}'.format(activeCourse.subject, activeCourse.number,
-                                                                activeCourse.title, activeCourse.units, activeCourse.letterGrade))
+    def displayPastCourses(self, user):
+        for pastTerm in user.pastTerms:
+            print('{} -'.format(pastTerm.getTitle()))
+            for pastCourse in pastTerm.courses:
+                print('\t[{} {}] {} - units: {}, grade: {}'.format(pastCourse.subject, pastCourse.number,
+                                                                pastCourse.title, pastCourse.units, pastCourse.letterGrade))

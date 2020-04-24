@@ -12,7 +12,7 @@ class User:
         self.firstName = firstName
         self.lastName = lastName
         self.transferredCourses = []
-        self.activeTerm = Term()
+        self.pastTerms = []
 
 
     def serialize(self):
@@ -28,4 +28,7 @@ class User:
             transferredCourse = Course()
             transferredCourse.deserialize(transferredCourseData)
             self.transferredCourses.append(transferredCourse)
-        self.activeTerm.deserialize(data.get('activeTerm'))
+        for pastTermData in data.get('pastTerms'):
+            pastTerm = Term()
+            pastTerm.deserialize(pastTermData)
+            self.pastTerms.append(pastTerm)
