@@ -1,7 +1,7 @@
 from structures.active_course import ActiveCourse
 
 
-class ActiveTerm:
+class Term:
 
     def __init__(self):
         self.semester = ''

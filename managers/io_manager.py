@@ -49,6 +49,12 @@ class IOManager:
         print('Password: {}'.format(user.password))
 
 
+    def displayTransferredCourses(self, user):
+        for transferredCourse in user.transferredCourses:
+            print('[{} {}] {} - units: {}'.format(transferredCourse.subject, transferredCourse.number,
+                                                                transferredCourse.title, transferredCourse.units))
+
+
     def displayActiveCourses(self, user):
         for activeCourse in user.activeTerm.activeCourses:
             print('[{} {}] {} - units: {}, grade: {}'.format(activeCourse.subject, activeCourse.number,
