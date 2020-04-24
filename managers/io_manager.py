@@ -50,5 +50,6 @@ class IOManager:
 
 
     def displayActiveCourses(self, user):
-        for course in user.activeTerm.courses:
-            print('[{} {}] {} - credits: {}, grade: {}'.format(course.subject, course.number, course.title, course.credits, course.letterGrade))
+        for activeCourse in user.activeTerm.activeCourses:
+            print('[{} {}] {} - units: {}, grade: {}'.format(activeCourse.subject, activeCourse.number,
+                                                                activeCourse.title, activeCourse.units, activeCourse.letterGrade))

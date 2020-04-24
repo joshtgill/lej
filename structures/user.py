@@ -1,5 +1,5 @@
 import uuid
-from structures.term import Term
+from structures.active_term import ActiveTerm
 
 
 class User:
@@ -10,7 +10,7 @@ class User:
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
-        self.activeTerm = Term()
+        self.activeTerm = ActiveTerm()
 
 
     def serialize(self):
