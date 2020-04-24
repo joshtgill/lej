@@ -1,0 +1,168 @@
+{
+    "users": {
+        "a8c1a5a5-aede-4acf-a54a-a4c90e116576": {
+            "email": "joshtg.007@gmail.com",
+            "password": "pass1",
+            "firstName": "Josh",
+            "lastName": "Gillette",
+            "transferredCourses": [
+                {
+                    "subject": "POL",
+                    "number": 220,
+                    "title": "American Politics",
+                    "units": 3
+                }
+            ],
+            "pastTerms": [
+                {
+                    "semester": "Fall",
+                    "year": 2016,
+                    "courses": [
+                        {
+                            "subject": "FY",
+                            "number": 100,
+                            "title": "First Year Seminar",
+                            "units": 1,
+                            "letterGrade": "P",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Hannah Perfet",
+                                    "occurences": {
+                                        "W": ["11:00", "12:15"]
+                                    },
+                                    "location": "Quad Center 200"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 131,
+                            "title": "Calculus I",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Ahmad Almomani",
+                                    "occurences": {
+                                        "M": ["10:00", "10:50"],
+                                        "W": ["10:00", "10:50"],
+                                        "F": ["10:00", "10:50"]
+                                    },
+                                    "location": "Science Center 162"
+                                },
+                                {
+                                    "title": "Discussion",
+                                    "instructor": "Josh Beauregard",
+                                    "occurences": {
+                                        "T": ["12:00", "12:50"]
+                                    },
+                                    "location": "Science Center 340"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CM",
+                            "number": 131,
+                            "title": "General Chemistry I",
+                            "units": 4,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "James Peploski",
+                                    "occurences": {
+                                        "M": ["14:00", "14:50"],
+                                        "W": ["14:00", "14:50"],
+                                        "F": ["14:00", "14:50"]
+                                    },
+                                    "location": "Science Center 360"
+                                },
+                                {
+                                    "title": "Lab",
+                                    "instructor": "Susan Kant",
+                                    "occurence": {
+                                        "M": ["8:00", "9:50"]
+                                    },
+                                    "location": "Science Center 136"
+                                },
+                                {
+                                    "title": "Discussion",
+                                    "instructor": "Herb Wright",
+                                    "occurences": {
+                                        "T": ["15:00", "15:50"]
+                                    },
+                                    "location": "Science Center 354"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 141,
+                            "title": "Intro to Comp Sci I",
+                            "units": 4,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Jeanna Matthews",
+                                    "occurences": {
+                                        "M": ["16:00", "16:50"],
+                                        "W": ["16:00", "16:50"],
+                                        "F": ["16:00", "16:50"]
+                                    },
+                                    "location": "CAMP 172"
+                                },
+                                {
+                                    "title": "Lab",
+                                    "instructor": "Graham Northup",
+                                    "occurences": {
+                                        "T": ["11:00", "11:50"]
+                                    },
+                                    "location": "Science Center 334"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "UNIV",
+                            "number": 190,
+                            "title": "The Clarkson Seminar",
+                            "units": 3,
+                            "letterGrade": "A-",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Garcia",
+                                    "occurences": {
+                                        "T": ["16:00", "17:15"],
+                                        "TH": ["16:00", "17:15"]
+                                    },
+                                    "location": "Science Center 342"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 41,
+                            "title": "Co-Calculus Mathematics",
+                            "units": 2,
+                            "letterGrade": "P",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Indika Udagedara",
+                                    "occurences": {
+                                        "M": ["13:00", "13:50"],
+                                        "W": ["13:00", "13:50"]
+                                    },
+                                    "location": "Snell B10L"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
