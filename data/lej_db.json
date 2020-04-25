@@ -386,6 +386,183 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "semester": "Fall",
+                    "year": 2017,
+                    "courses": [
+                        {
+                            "subject": "CS",
+                            "number": 242,
+                            "title": "Adv Prog Concepts in Java",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Natasha Banerjee",
+                                    "occurences": {
+                                        "T": [
+                                            "8:00",
+                                            "9:15"
+                                        ],
+                                        "TH": [
+                                            "8:00",
+                                            "9:15"
+                                        ]
+                                    },
+                                    "location": "Science Center 160"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "HIST",
+                            "number": 250,
+                            "title": "History - 20th Century Germany",
+                            "units": 3,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Sheila Weiss",
+                                    "occurences": {
+                                        "T": [
+                                            "14:30",
+                                            "15:45"
+                                        ],
+                                        "TH": [
+                                            "14:30",
+                                            "15:45"
+                                        ]
+                                    },
+                                    "location": "Bertrand H. Snell Hall 169"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 211,
+                            "title": "Foundations",
+                            "units": 3,
+                            "letterGrade": "A+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Jie Sun",
+                                    "occurences": {
+                                        "M": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "W": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "F": [
+                                            "10:00",
+                                            "10:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 356"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 231,
+                            "title": "Calculus III",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Felland",
+                                    "occurences": {
+                                        "M": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "W": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "F": [
+                                            "14:00",
+                                            "14:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 362"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "PH",
+                            "number": 131,
+                            "title": "Physics I",
+                            "units": 4,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Ramsdell",
+                                    "occurences": {
+                                        "M": [
+                                            "11:00",
+                                            "11:50"
+                                        ],
+                                        "W": [
+                                            "11:00",
+                                            "11:50"
+                                        ],
+                                        "F": [
+                                            "11:00",
+                                            "11:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 360"
+                                },
+                                {
+                                    "title": "Lab/Recitation",
+                                    "instructor": "Andre Sutven",
+                                    "occurences": {
+                                        "T": [
+                                            "10:00",
+                                            "11:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 386"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "STAT",
+                            "number": 383,
+                            "title": "Probability and Statistics",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Sumona Mondal",
+                                    "occurences": {
+                                        "M": [
+                                            "8:00",
+                                            "8:50"
+                                        ],
+                                        "W": [
+                                            "8:00",
+                                            "8:50"
+                                        ],
+                                        "F": [
+                                            "8:00",
+                                            "8:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 160"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
