@@ -1,5 +1,6 @@
 from data_service import DataService
 from account_service import AccountService
+from calc_service import CalcService
 from io_service import IOService
 from structures.accounts.undergrad import Undergrad
 import sys
@@ -11,8 +12,10 @@ class Lej:
         # Various services to be used and injected throughout application.
         self.localDb = DataService('data/local_db.json')
         self.lejDb = DataService('data/lej_db.json')
-        self.ioService = IOService()
+        self.calcService = CalcService()
+        self.ioService = IOService(self.calcService)
         self.accountService = AccountService(self.localDb, self.lejDb, self.ioService)
+
 
         # Define the application's navigation, where each element represents a navigation grouping.
         self.navDirectory = [{'Create Account': self.createAccount, 'Login': self.login, 'Exit': self.stop},

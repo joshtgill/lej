@@ -1,5 +1,9 @@
 class IOService:
 
+    def __init__(self, calcService):
+        self.calcService = calcService
+
+
     def println(self, numLines=1):
         for line in range(numLines):
             print()
@@ -45,19 +49,24 @@ class IOService:
 
     def displayProfile(self, undergrad):
         print('Name: {} {}'.format(undergrad.firstName, undergrad.lastName))
-        print('Email: {}'.format(undergrad.email))
-        print('Password: {}'.format(undergrad.password))
+        print('Email: {}\n'.format(undergrad.email))
+
+        print('Transferred courses: {}'.format(len(undergrad.transferredCourses)))
+        print('Completed courses: {}'.format(self.calcService.countUndergradCourses(undergrad.pastTerms)))
+        print('Completed units: {}'.format(self.calcService.countUndergradUnits(undergrad.pastTerms)))
+        print('Cumulative GPA: {}'.format(self.calcService.calcUndergradGpa(undergrad.pastTerms)))
 
 
     def displayTransferredCourses(self, undergrad):
         for transferredCourse in undergrad.transferredCourses:
-            print('[{} {}] {} - units: {}'.format(transferredCourse.subject, transferredCourse.number,
-                                                                transferredCourse.title, transferredCourse.units))
+            print('{} ({} {}) - units: {}'.format(transferredCourse.title, transferredCourse.subject,
+                                                  transferredCourse.number, transferredCourse.units))
 
 
     def displayPastTerms(self, undergrad):
         for pastTerm in undergrad.pastTerms:
-            print('{} -'.format(pastTerm.getTitle()))
+            print('{} - {} units on {} courses for a {} GPA'.format(pastTerm.getTitle(), self.calcService.countTermUnits(pastTerm),
+                                                                    len(pastTerm.courses), self.calcService.calcTermGpa(pastTerm)))
             for pastCourse in pastTerm.courses:
                 print('\t{} ({} {}) - units: {}, grade: {}'.format(pastCourse.title, pastCourse.subject, pastCourse.number,
                                                                 pastCourse.units, pastCourse.letterGrade))
