@@ -563,6 +563,179 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "semester": "Spring",
+                    "year": 2018,
+                    "courses": [
+                        {
+                            "subject": "CS",
+                            "number": 241,
+                            "title": "Computer Organization",
+                            "units": 3,
+                            "letterGrade": "A-",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christino Tamon",
+                                    "occurences": {
+                                        "T": [
+                                            "15:30",
+                                            "16:45"
+                                        ],
+                                        "TH": [
+                                            "15:30",
+                                            "16:45"
+                                        ]
+                                    },
+                                    "location": "Science Center 362"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 344,
+                            "title": "Algorithms and Data Structures",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christino Tamon",
+                                    "occurences": {
+                                        "T": [
+                                            "10:30",
+                                            "11:45"
+                                        ],
+                                        "TH": [
+                                            "10:30",
+                                            "11:45"
+                                        ]
+                                    },
+                                    "location": "Science Center 362"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 452,
+                            "title": "Computer Graphics",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Natasha Banerjee",
+                                    "occurences": {
+                                        "T": [
+                                            "8:00",
+                                            "9:15"
+                                        ],
+                                        "TH": [
+                                            "8:00",
+                                            "9:15"
+                                        ]
+                                    },
+                                    "location": "Educational Res Ctr 102"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 200,
+                            "title": "Intro Math Modeling & Software",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Joseph Skufca",
+                                    "occurences": {
+                                        "M": [
+                                            "9:00",
+                                            "9:50"
+                                        ],
+                                        "W": [
+                                            "9:00",
+                                            "9:50"
+                                        ],
+                                        "F": [
+                                            "9:00",
+                                            "9:50"
+                                        ]
+                                    },
+                                    "location": "Rowley Lab 142"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 232,
+                            "title": "Elementary Differential Eq",
+                            "units": 3,
+                            "letterGrade": "A+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Jonathan Martin",
+                                    "occurences": {
+                                        "M": [
+                                            "13:00",
+                                            "13:50"
+                                        ],
+                                        "W": [
+                                            "13:00",
+                                            "13:50"
+                                        ],
+                                        "F": [
+                                            "13:00",
+                                            "13:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 362"
+                                },
+                                {
+                                    "title": "Recitation",
+                                    "instructor": "Waren Letapi",
+                                    "occurences": {
+                                        "T": [
+                                            "13:00",
+                                            "13:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 348"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 339,
+                            "title": "Applied Linear Algebra",
+                            "units": 3,
+                            "letterGrade": "A+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Indika Udagedara",
+                                    "occurences": {
+                                        "M": [
+                                            "15:00",
+                                            "15:50"
+                                        ],
+                                        "W": [
+                                            "15:00",
+                                            "15:50"
+                                        ],
+                                        "F": [
+                                            "15:00",
+                                            "15:50"
+                                        ]
+                                    },
+                                    "location": "CAMP 177"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
