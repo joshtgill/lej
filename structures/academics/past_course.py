@@ -1,4 +1,4 @@
-from structures.course import Course
+from course import Course
 
 
 class PastCourse(Course):

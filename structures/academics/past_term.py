@@ -1,4 +1,4 @@
-from structures.term import Term
+from term import Term
 
 
 class PastTerm(Term):

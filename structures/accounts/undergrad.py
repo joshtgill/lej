@@ -1,6 +1,6 @@
-from structures.user import User
-from structures.course import Course
-from structures.past_term import PastTerm
+from user import User
+from course import Course
+from past_term import PastTerm
 
 
 class Undergrad(User):

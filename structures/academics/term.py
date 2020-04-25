@@ -1,4 +1,4 @@
-from structures.past_course import PastCourse
+from past_course import PastCourse
 
 
 class Term:

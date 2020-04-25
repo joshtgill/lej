@@ -1,4 +1,4 @@
-from structures.undergrad import Undergrad
+from structures.accounts.undergrad import Undergrad
 
 
 class AccountManager:

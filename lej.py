@@ -1,14 +1,14 @@
-from managers.data_manager import DataManager
-from managers.account_manager import AccountManager
-from managers.io_manager import IOManager
-from structures.undergrad import Undergrad
+from data_manager import DataManager
+from account_manager import AccountManager
+from io_manager import IOManager
+from structures.accounts.undergrad import Undergrad
 import sys
 
 
 class Lej:
 
     def __init__(self):
-        # Various managers to be used and injected throughout application.
+        # Various services to be used and injected throughout application.
         self.localDb = DataManager('data/local_db.json')
         self.lejDb = DataManager('data/lej_db.json')
         self.ioManager = IOManager()
