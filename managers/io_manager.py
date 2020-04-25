@@ -5,19 +5,8 @@ class IOManager:
             print()
 
 
-    def handleMenuInput(self, *options):
-        print('Enter selection -')
-
-        i = 1
-        for option in options:
-            print('({}) {}'.format(i, option), end = '\t')
-            i += 1
-        print()
-
-        userSelection = self.handleNumberInput('Selection #', 1, len(options))
-        print()
-
-        return userSelection
+    def gatherInput(self, prompt):
+        return input(prompt)
 
 
     def handleNumberInput(self, prompt, minNumber, maxNumber):
@@ -35,8 +24,19 @@ class IOManager:
                 return userNumber
 
 
-    def gatherInput(self, prompt):
-        return input(prompt)
+    def handleMenuInput(self, *options):
+        print('Enter selection -')
+
+        i = 1
+        for option in options:
+            print('({}) {}'.format(i, option), end = '     ')
+            i += 1
+        print()
+
+        userSelection = self.handleNumberInput('Selection #', 1, len(options))
+        print()
+
+        return userSelection
 
 
     def displayErrorMessage(self, message):
@@ -59,5 +59,5 @@ class IOManager:
         for pastTerm in user.pastTerms:
             print('{} -'.format(pastTerm.getTitle()))
             for pastCourse in pastTerm.courses:
-                print('\t[{} {}] {} - units: {}, grade: {}'.format(pastCourse.subject, pastCourse.number,
-                                                                pastCourse.title, pastCourse.units, pastCourse.letterGrade))
+                print('\t{} ({} {}) - units: {}, grade: {}'.format(pastCourse.title, pastCourse.subject, pastCourse.number,
+                                                                pastCourse.units, pastCourse.letterGrade))
