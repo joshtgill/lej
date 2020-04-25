@@ -3,7 +3,7 @@ import json
 from undergrad import Undergrad
 
 
-class DataManager:
+class DataService:
 
     def __init__(self, dataFileName):
         self.dataFileName = dataFileName

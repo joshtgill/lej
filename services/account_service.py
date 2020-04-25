@@ -1,12 +1,12 @@
 from structures.accounts.undergrad import Undergrad
 
 
-class AccountManager:
+class AccountService:
 
-    def __init__(self, localDb, lejDb, ioManager):
+    def __init__(self, localDb, lejDb, ioService):
         self.localDb = localDb
         self.lejDb = lejDb
-        self.ioManager = ioManager
+        self.ioService = ioService
 
         self.undergrad = None
 
@@ -22,7 +22,7 @@ class AccountManager:
 
 
     def login(self):
-        userEmail = self.ioManager.gatherInput('Enter email: ')
+        userEmail = self.ioService.gatherInput('Enter email: ')
         foundUser = None
         # Verify email exists
         for uuid in self.lejDb.query('users'):
@@ -32,14 +32,14 @@ class AccountManager:
                 foundUser = undergrad
                 break
         if foundUser == None:
-            self.ioManager.displayErrorMessage('Could not find account associated with provided email.')
+            self.ioService.displayErrorMessage('Could not find account associated with provided email.')
 
             return False
 
-        userPassword = self.ioManager.gatherInput('Enter password: ')
+        userPassword = self.ioService.gatherInput('Enter password: ')
         # Verify password corresponds with email
         if foundUser.password != userPassword:
-            self.ioManager.displayErrorMessage('Password incorrect for provided email.')
+            self.ioService.displayErrorMessage('Password incorrect for provided email.')
 
             return False
 
@@ -52,17 +52,17 @@ class AccountManager:
 
 
     def createAccount(self):
-        userEmail = self.ioManager.gatherInput('Enter email: ')
+        userEmail = self.ioService.gatherInput('Enter email: ')
         # Verify email doesn't already exist
         for uuid in self.lejDb.query('users'):
             undergrad = self.lejDb.query('users/{}'.format(uuid), Undergrad)
             if undergrad.email == userEmail:
-                self.ioManager.displayErrorMessage('Email already in use.')
+                self.ioService.displayErrorMessage('Email already in use.')
 
                 return False
 
         # Create new undergrad and write to db
-        newUser = Undergrad(userEmail, self.ioManager.gatherInput('Enter password: '), self.ioManager.gatherInput('Enter first name: '), self.ioManager.gatherInput('Enter last name: '))
+        newUser = Undergrad(userEmail, self.ioService.gatherInput('Enter password: '), self.ioService.gatherInput('Enter first name: '), self.ioService.gatherInput('Enter last name: '))
         self.lejDb.update('users/{}'.format(newUser.uuid), newUser)
 
         # Locally save login
