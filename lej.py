@@ -1,7 +1,7 @@
 from managers.data_manager import DataManager
 from managers.account_manager import AccountManager
 from managers.io_manager import IOManager
-from structures.user import User
+from structures.undergrad import Undergrad
 import sys
 
 
@@ -51,7 +51,7 @@ class Lej:
 
 
     def viewProfile(self):
-        self.ioManager.displayProfile(self.accountManager.user)
+        self.ioManager.displayProfile(self.accountManager.undergrad)
 
         return self.navIndex
 
@@ -61,13 +61,13 @@ class Lej:
 
 
     def viewTransferredCourses(self):
-        self.ioManager.displayTransferredCourses(self.accountManager.user)
+        self.ioManager.displayTransferredCourses(self.accountManager.undergrad)
 
         return self.navIndex
 
 
     def viewPastCourses(self):
-        self.ioManager.displayPastCourses(self.accountManager.user)
+        self.ioManager.displayPastCourses(self.accountManager.undergrad)
 
         return self.navIndex
 

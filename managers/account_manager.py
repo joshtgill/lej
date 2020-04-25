@@ -1,4 +1,4 @@
-from structures.user import User
+from structures.undergrad import Undergrad
 
 
 class AccountManager:
@@ -8,13 +8,13 @@ class AccountManager:
         self.lejDb = lejDb
         self.ioManager = ioManager
 
-        self.user = None
+        self.undergrad = None
 
 
     def autoLogin(self):
         uuid = self.localDb.query('uuid')
         if uuid != []:
-            self.user = self.lejDb.query('users/{}'.format(uuid), User)
+            self.undergrad = self.lejDb.query('users/{}'.format(uuid), Undergrad)
 
             return True
 
@@ -26,10 +26,10 @@ class AccountManager:
         foundUser = None
         # Verify email exists
         for uuid in self.lejDb.query('users'):
-            user = self.lejDb.query('users/{}'.format(uuid), User)
-            if user.email == userEmail:
+            undergrad = self.lejDb.query('users/{}'.format(uuid), Undergrad)
+            if undergrad.email == userEmail:
                 foundUuid = uuid
-                foundUser = user
+                foundUser = undergrad
                 break
         if foundUser == None:
             self.ioManager.displayErrorMessage('Could not find account associated with provided email.')
@@ -46,7 +46,7 @@ class AccountManager:
         # Locally save login
         self.localDb.update('uuid', str(foundUuid))
 
-        self.user = foundUser
+        self.undergrad = foundUser
 
         return True
 
@@ -55,20 +55,20 @@ class AccountManager:
         userEmail = self.ioManager.gatherInput('Enter email: ')
         # Verify email doesn't already exist
         for uuid in self.lejDb.query('users'):
-            user = self.lejDb.query('users/{}'.format(uuid), User)
-            if user.email == userEmail:
+            undergrad = self.lejDb.query('users/{}'.format(uuid), Undergrad)
+            if undergrad.email == userEmail:
                 self.ioManager.displayErrorMessage('Email already in use.')
 
                 return False
 
-        # Create new user and write to db
-        newUser = User(userEmail, self.ioManager.gatherInput('Enter password: '), self.ioManager.gatherInput('Enter first name: '), self.ioManager.gatherInput('Enter last name: '))
+        # Create new undergrad and write to db
+        newUser = Undergrad(userEmail, self.ioManager.gatherInput('Enter password: '), self.ioManager.gatherInput('Enter first name: '), self.ioManager.gatherInput('Enter last name: '))
         self.lejDb.update('users/{}'.format(newUser.uuid), newUser)
 
         # Locally save login
         self.localDb.update('uuid', str(newUser.uuid))
 
-        self.user = newUser
+        self.undergrad = newUser
 
         return True
 

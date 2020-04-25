@@ -43,20 +43,20 @@ class IOManager:
         print('\nERROR: {}'.format(message))
 
 
-    def displayProfile(self, user):
-        print('Name: {} {}'.format(user.firstName, user.lastName))
-        print('Email: {}'.format(user.email))
-        print('Password: {}'.format(user.password))
+    def displayProfile(self, undergrad):
+        print('Name: {} {}'.format(undergrad.firstName, undergrad.lastName))
+        print('Email: {}'.format(undergrad.email))
+        print('Password: {}'.format(undergrad.password))
 
 
-    def displayTransferredCourses(self, user):
-        for transferredCourse in user.transferredCourses:
+    def displayTransferredCourses(self, undergrad):
+        for transferredCourse in undergrad.transferredCourses:
             print('[{} {}] {} - units: {}'.format(transferredCourse.subject, transferredCourse.number,
                                                                 transferredCourse.title, transferredCourse.units))
 
 
-    def displayPastCourses(self, user):
-        for pastTerm in user.pastTerms:
+    def displayPastCourses(self, undergrad):
+        for pastTerm in undergrad.pastTerms:
             print('{} -'.format(pastTerm.getTitle()))
             for pastCourse in pastTerm.courses:
                 print('\t{} ({} {}) - units: {}, grade: {}'.format(pastCourse.title, pastCourse.subject, pastCourse.number,

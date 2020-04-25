@@ -1,6 +1,4 @@
 import uuid
-from structures.course import Course
-from structures.past_term import PastTerm
 
 
 class User:
@@ -11,8 +9,6 @@ class User:
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
-        self.transferredCourses = []
-        self.pastTerms = []
 
 
     def serialize(self):
@@ -24,11 +20,3 @@ class User:
         self.password = data.get('password')
         self.firstName = data.get('firstName')
         self.lastName = data.get('lastName')
-        for transferredCourseData in data.get('transferredCourses'):
-            transferredCourse = Course()
-            transferredCourse.deserialize(transferredCourseData)
-            self.transferredCourses.append(transferredCourse)
-        for pastTermData in data.get('pastTerms'):
-            pastTerm = PastTerm()
-            pastTerm.deserialize(pastTermData)
-            self.pastTerms.append(pastTerm)
