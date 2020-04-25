@@ -55,7 +55,7 @@ class IOManager:
                                                                 transferredCourse.title, transferredCourse.units))
 
 
-    def displayPastCourses(self, undergrad):
+    def displayPastTerms(self, undergrad):
         for pastTerm in undergrad.pastTerms:
             print('{} -'.format(pastTerm.getTitle()))
             for pastCourse in pastTerm.courses:
