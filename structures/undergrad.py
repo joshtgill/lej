@@ -11,6 +11,25 @@ class Undergrad(User):
         self.pastTerms = []
 
 
+    def serialize(self):
+        # Serialize super
+        undergradData = super().serialize()
+
+        # Serialize transferred courses
+        transferredCoursesData = []
+        for transferredCourse in self.transferredCourses:
+            transferredCoursesData.append(transferredCourse.serialize())
+        undergradData.update({'transferredCourses': transferredCoursesData})
+
+        # Serialize past terms
+        pastTermsData = []
+        for pastTerm in self.pastTerms:
+            pastTermsData.append(pastTerm.serialize())
+        undergradData.update({'pastTerms': pastTermsData})
+
+        return undergradData
+
+
     def deserialize(self, data):
         super().deserialize(data)
         for transferredCourseData in data.get('transferredCourses'):

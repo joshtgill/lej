@@ -12,7 +12,7 @@ class User:
 
 
     def serialize(self):
-        return { 'email': self.email, 'password': self.password, 'firstName': self.firstName, 'lastName': self.lastName }
+        return {'email': self.email, 'password': self.password, 'firstName': self.firstName, 'lastName': self.lastName}
 
 
     def deserialize(self, data):

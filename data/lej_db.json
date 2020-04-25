@@ -29,7 +29,10 @@
                                     "title": "Lecture",
                                     "instructor": "Hannah Perfet",
                                     "occurences": {
-                                        "W": ["11:00", "12:15"]
+                                        "W": [
+                                            "11:00",
+                                            "12:15"
+                                        ]
                                     },
                                     "location": "Quad Center 200"
                                 }
@@ -46,9 +49,18 @@
                                     "title": "Lecture",
                                     "instructor": "Ahmad Almomani",
                                     "occurences": {
-                                        "M": ["10:00", "10:50"],
-                                        "W": ["10:00", "10:50"],
-                                        "F": ["10:00", "10:50"]
+                                        "M": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "W": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "F": [
+                                            "10:00",
+                                            "10:50"
+                                        ]
                                     },
                                     "location": "Science Center 162"
                                 },
@@ -56,7 +68,10 @@
                                     "title": "Discussion",
                                     "instructor": "Josh Beauregard",
                                     "occurences": {
-                                        "T": ["12:00", "12:50"]
+                                        "T": [
+                                            "12:00",
+                                            "12:50"
+                                        ]
                                     },
                                     "location": "Science Center 340"
                                 }
@@ -73,9 +88,18 @@
                                     "title": "Lecture",
                                     "instructor": "James Peploski",
                                     "occurences": {
-                                        "M": ["14:00", "14:50"],
-                                        "W": ["14:00", "14:50"],
-                                        "F": ["14:00", "14:50"]
+                                        "M": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "W": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "F": [
+                                            "14:00",
+                                            "14:50"
+                                        ]
                                     },
                                     "location": "Science Center 360"
                                 },
@@ -83,7 +107,10 @@
                                     "title": "Lab",
                                     "instructor": "Susan Kant",
                                     "occurence": {
-                                        "M": ["8:00", "9:50"]
+                                        "M": [
+                                            "8:00",
+                                            "9:50"
+                                        ]
                                     },
                                     "location": "Science Center 136"
                                 },
@@ -91,7 +118,10 @@
                                     "title": "Discussion",
                                     "instructor": "Herb Wright",
                                     "occurences": {
-                                        "T": ["15:00", "15:50"]
+                                        "T": [
+                                            "15:00",
+                                            "15:50"
+                                        ]
                                     },
                                     "location": "Science Center 354"
                                 }
@@ -108,9 +138,18 @@
                                     "title": "Lecture",
                                     "instructor": "Jeanna Matthews",
                                     "occurences": {
-                                        "M": ["16:00", "16:50"],
-                                        "W": ["16:00", "16:50"],
-                                        "F": ["16:00", "16:50"]
+                                        "M": [
+                                            "16:00",
+                                            "16:50"
+                                        ],
+                                        "W": [
+                                            "16:00",
+                                            "16:50"
+                                        ],
+                                        "F": [
+                                            "16:00",
+                                            "16:50"
+                                        ]
                                     },
                                     "location": "CAMP 172"
                                 },
@@ -118,7 +157,10 @@
                                     "title": "Lab",
                                     "instructor": "Graham Northup",
                                     "occurences": {
-                                        "T": ["11:00", "11:50"]
+                                        "T": [
+                                            "11:00",
+                                            "11:50"
+                                        ]
                                     },
                                     "location": "Science Center 334"
                                 }
@@ -135,8 +177,14 @@
                                     "title": "Lecture",
                                     "instructor": "Michael Garcia",
                                     "occurences": {
-                                        "T": ["16:00", "17:15"],
-                                        "TH": ["16:00", "17:15"]
+                                        "T": [
+                                            "16:00",
+                                            "17:15"
+                                        ],
+                                        "TH": [
+                                            "16:00",
+                                            "17:15"
+                                        ]
                                     },
                                     "location": "Science Center 342"
                                 }
@@ -153,8 +201,14 @@
                                     "title": "Lecture",
                                     "instructor": "Indika Udagedara",
                                     "occurences": {
-                                        "M": ["13:00", "13:50"],
-                                        "W": ["13:00", "13:50"]
+                                        "M": [
+                                            "13:00",
+                                            "13:50"
+                                        ],
+                                        "W": [
+                                            "13:00",
+                                            "13:50"
+                                        ]
                                     },
                                     "location": "Snell B10L"
                                 }
@@ -177,9 +231,18 @@
                                     "title": "Lecture",
                                     "instructor": "James Peploski",
                                     "occurences": {
-                                        "M": ["14:00", "14:50"],
-                                        "W": ["14:00", "14:50"],
-                                        "F": ["14:00", "14:50"]
+                                        "M": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "W": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "F": [
+                                            "14:00",
+                                            "14:50"
+                                        ]
                                     },
                                     "location": "Science Center 360"
                                 },
@@ -187,7 +250,10 @@
                                     "title": "Lab",
                                     "instructor": "Jack Smalt",
                                     "occurences": {
-                                        "M": ["11:00", "12:50"]
+                                        "M": [
+                                            "11:00",
+                                            "12:50"
+                                        ]
                                     },
                                     "location": "Science Center 136"
                                 },
@@ -195,7 +261,10 @@
                                     "title": "Discussion",
                                     "instructor": "Jack Smalt",
                                     "occurences": {
-                                        "M": ["11:00", "11:50"]
+                                        "M": [
+                                            "11:00",
+                                            "11:50"
+                                        ]
                                     },
                                     "location": "Science Center 136"
                                 }
@@ -212,8 +281,14 @@
                                     "title": "Lecture",
                                     "instructor": "Alexis Maciel",
                                     "occurences": {
-                                        "T": ["12:00", "1:15"],
-                                        "TH": ["12:00", "1:15"]
+                                        "T": [
+                                            "12:00",
+                                            "1:15"
+                                        ],
+                                        "TH": [
+                                            "12:00",
+                                            "1:15"
+                                        ]
                                     },
                                     "location": "Science Center 162"
                                 }
@@ -230,8 +305,14 @@
                                     "title": "Lecture",
                                     "instructor": "Tyler Hayes",
                                     "occurences": {
-                                        "T": ["15:30", "16:45"],
-                                        "TH": ["15:30", "16:45"]
+                                        "T": [
+                                            "15:30",
+                                            "16:45"
+                                        ],
+                                        "TH": [
+                                            "15:30",
+                                            "16:45"
+                                        ]
                                     },
                                     "location": "Snell Hall 175"
                                 }
@@ -248,9 +329,18 @@
                                     "title": "Lecture",
                                     "instructor": "Rana Parshad",
                                     "occurences": {
-                                        "M": ["16:00", "16:50"],
-                                        "W": ["16:00", "16:50"],
-                                        "F": ["16:00", "16:50"]
+                                        "M": [
+                                            "16:00",
+                                            "16:50"
+                                        ],
+                                        "W": [
+                                            "16:00",
+                                            "16:50"
+                                        ],
+                                        "F": [
+                                            "16:00",
+                                            "16:50"
+                                        ]
                                     },
                                     "location": "Science Center 160"
                                 },
@@ -258,7 +348,10 @@
                                     "title": "Discussion",
                                     "instructor": "Eric Smoule",
                                     "occurences": {
-                                        "TH": ["14:00", "14:50"]
+                                        "TH": [
+                                            "14:00",
+                                            "14:50"
+                                        ]
                                     },
                                     "location": "Science Center 344"
                                 }
@@ -275,9 +368,18 @@
                                     "title": "Lecture",
                                     "instructor": "Christopher Robinson",
                                     "occurences": {
-                                        "M": ["15:00", "15:50"],
-                                        "W": ["15:00", "15:50"],
-                                        "F": ["15:00", "15:50"]
+                                        "M": [
+                                            "15:00",
+                                            "15:50"
+                                        ],
+                                        "W": [
+                                            "15:00",
+                                            "15:50"
+                                        ],
+                                        "F": [
+                                            "15:00",
+                                            "15:50"
+                                        ]
                                     },
                                     "location": "Science Center 340"
                                 }

@@ -5,8 +5,17 @@ class PastTerm(Term):
 
     def __init__(self):
         super().__init__()
-        self.units = 0
-        self.gpa = 0
+
+
+    def serialize(self):
+        coursesData = []
+        for course in self.courses:
+            coursesData.append(course.serialize())
+
+        termData = super().serialize()
+        termData.update({'courses': coursesData})
+
+        return termData
 
 
     def deserialize(self, data):

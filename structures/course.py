@@ -7,6 +7,10 @@ class Course:
         self.units = 0
 
 
+    def serialize(self):
+        return {'subject': self.subject, 'number': self.number, 'title': self.title, 'units': self.units}
+
+
     def deserialize(self, data):
         self.subject = data.get('subject')
         self.number = data.get('number')
