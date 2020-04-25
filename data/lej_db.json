@@ -161,6 +161,129 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "semester": "Spring",
+                    "year": 2017,
+                    "courses": [
+                        {
+                            "subject": "CM",
+                            "number": 132,
+                            "title": "General Chemistry II",
+                            "units": 4,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "James Peploski",
+                                    "occurences": {
+                                        "M": ["14:00", "14:50"],
+                                        "W": ["14:00", "14:50"],
+                                        "F": ["14:00", "14:50"]
+                                    },
+                                    "location": "Science Center 360"
+                                },
+                                {
+                                    "title": "Lab",
+                                    "instructor": "Jack Smalt",
+                                    "occurences": {
+                                        "M": ["11:00", "12:50"]
+                                    },
+                                    "location": "Science Center 136"
+                                },
+                                {
+                                    "title": "Discussion",
+                                    "instructor": "Jack Smalt",
+                                    "occurences": {
+                                        "M": ["11:00", "11:50"]
+                                    },
+                                    "location": "Science Center 136"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 142,
+                            "title": "Intro to Comp Sci II",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Alexis Maciel",
+                                    "occurences": {
+                                        "T": ["12:00", "1:15"],
+                                        "TH": ["12:00", "1:15"]
+                                    },
+                                    "location": "Science Center 162"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "IS",
+                            "number": 237,
+                            "title": "Intro to App Development",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Tyler Hayes",
+                                    "occurences": {
+                                        "T": ["15:30", "16:45"],
+                                        "TH": ["15:30", "16:45"]
+                                    },
+                                    "location": "Snell Hall 175"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 132,
+                            "title": "Calculus II",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Rana Parshad",
+                                    "occurences": {
+                                        "M": ["16:00", "16:50"],
+                                        "W": ["16:00", "16:50"],
+                                        "F": ["16:00", "16:50"]
+                                    },
+                                    "location": "Science Center 160"
+                                },
+                                {
+                                    "title": "Discussion",
+                                    "instructor": "Eric Smoule",
+                                    "occurences": {
+                                        "TH": ["14:00", "14:50"]
+                                    },
+                                    "location": "Science Center 344"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "POL",
+                            "number": 374,
+                            "title": "Env Political Theory",
+                            "units": 3,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christopher Robinson",
+                                    "occurences": {
+                                        "M": ["15:00", "15:50"],
+                                        "W": ["15:00", "15:50"],
+                                        "F": ["15:00", "15:50"]
+                                    },
+                                    "location": "Science Center 340"
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
