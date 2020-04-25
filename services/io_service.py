@@ -48,8 +48,7 @@ class IOService:
 
 
     def displayProfile(self, undergrad):
-        print('Name: {} {}'.format(undergrad.firstName, undergrad.lastName))
-        print('Email: {}\n'.format(undergrad.email))
+        print('{} {} - {}\n'.format(undergrad.firstName, undergrad.lastName, undergrad.email))
 
         print('Transferred courses: {}'.format(len(undergrad.transferredCourses)))
         print('Completed courses: {}'.format(self.calcService.countUndergradCourses(undergrad.pastTerms)))
