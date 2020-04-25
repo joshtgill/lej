@@ -1,6 +1,6 @@
 import uuid
 from structures.course import Course
-from structures.term import Term
+from structures.past_term import PastTerm
 
 
 class User:
@@ -29,6 +29,6 @@ class User:
             transferredCourse.deserialize(transferredCourseData)
             self.transferredCourses.append(transferredCourse)
         for pastTermData in data.get('pastTerms'):
-            pastTerm = Term()
+            pastTerm = PastTerm()
             pastTerm.deserialize(pastTermData)
             self.pastTerms.append(pastTerm)

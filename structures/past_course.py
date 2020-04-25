@@ -4,6 +4,7 @@ from structures.course import Course
 class PastCourse(Course):
 
     def __init__(self):
+        super().__init__()
         self.letterGrade = ''
 
 
