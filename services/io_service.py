@@ -56,17 +56,17 @@ class IOService:
         print('Cumulative GPA: {}'.format(self.calcService.calcUndergradGpa(undergrad.pastTerms)))
 
 
-    def displayTransferredCourses(self, undergrad):
+    def displayTransferredCourses(self, transferredCourses):
         table = []
-        for transferredCourse in undergrad.transferredCourses:
+        for transferredCourse in transferredCourses:
             table.append(['{} {}'.format(transferredCourse.subject, transferredCourse.number), transferredCourse.title, transferredCourse.units])
 
         self.printTable(['Course', 'Title', 'Units'], table, 10)
 
 
-    def displayPastTerms(self, undergrad):
+    def displayPastTerms(self, pastTerms):
         table = []
-        for pastTerm in undergrad.pastTerms:
+        for pastTerm in pastTerms:
             for pastCourse in pastTerm.courses:
                 table.append(['{} {}'.format(pastCourse.subject, pastCourse.number), pastCourse.title, pastCourse.units, pastCourse.letterGrade, pastTerm.getTitle()])
 

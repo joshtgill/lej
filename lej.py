@@ -64,13 +64,13 @@ class Lej:
 
 
     def viewTransferredCourses(self):
-        self.ioService.displayTransferredCourses(self.accountService.undergrad)
+        self.ioService.displayTransferredCourses(self.accountService.undergrad.transferredCourses)
 
         return self.navIndex
 
 
     def viewPastTerms(self):
-        self.ioService.displayPastTerms(self.accountService.undergrad)
+        self.ioService.displayPastTerms(self.accountService.undergrad.pastTerms)
 
         return self.navIndex
 
