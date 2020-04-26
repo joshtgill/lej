@@ -736,6 +736,476 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "semester": "Fall",
+                    "year": 2018,
+                    "courses": [
+                        {
+                            "subject": "CS",
+                            "number": 341,
+                            "title": "Programming Languages",
+                            "units": 3,
+                            "letterGrade": "A+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christopher Lynch",
+                                    "occurences": {
+                                        "T": [
+                                            "9:30",
+                                            "10:45"
+                                        ],
+                                        "TH": [
+                                            "9:30",
+                                            "10:45"
+                                        ]
+                                    },
+                                    "location": "Rowley 244"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 345,
+                            "title": "Automata Theory & Formal Lang",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Alexis Maciel",
+                                    "occurences": {
+                                        "M": [
+                                            "9:00",
+                                            "9:50"
+                                        ],
+                                        "W": [
+                                            "9:00",
+                                            "9:50"
+                                        ],
+                                        "F": [
+                                            "9:00",
+                                            "9:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 356"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 350,
+                            "title": "Software Design & Development",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Sean Banerjee",
+                                    "occurences": {
+                                        "T": [
+                                            "13:00",
+                                            "14:15"
+                                        ],
+                                        "TH": [
+                                            "13:00",
+                                            "14:15"
+                                        ]
+                                    },
+                                    "location": "CAMP 194"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 313,
+                            "title": "Abstract Linear Algebra",
+                            "units": 3,
+                            "letterGrade": "C+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Guohui Song",
+                                    "occurences": {
+                                        "M": [
+                                            "12:00",
+                                            "12:50"
+                                        ],
+                                        "W": [
+                                            "12:00",
+                                            "12:50"
+                                        ],
+                                        "F": [
+                                            "12:00",
+                                            "12:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 346"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 321,
+                            "title": "Advanced Calculus I",
+                            "units": 3,
+                            "letterGrade": "B-",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Felland",
+                                    "occurences": {
+                                        "M": [
+                                            "11:00",
+                                            "11:50"
+                                        ],
+                                        "W": [
+                                            "11:00",
+                                            "11:50"
+                                        ],
+                                        "F": [
+                                            "11:00",
+                                            "11:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 340"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "PY",
+                            "number": 151,
+                            "title": "Introduction to Psychology",
+                            "units": 3,
+                            "letterGrade": "A-"
+                        }
+                    ]
+                },
+                {
+                    "semester": "Spring",
+                    "year": 2019,
+                    "courses": [
+                        {
+                            "subject": "CS",
+                            "number": 412,
+                            "title": "DS in Applied Comp Sci",
+                            "units": 1,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Research",
+                                    "instructor": "Natasha Banerjee",
+                                    "location": "TARS Lab"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 444,
+                            "title": "Operating Systems",
+                            "units": 3,
+                            "letterGrade": "A-",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Jeanna Matthews",
+                                    "occurences": {
+                                        "M": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "W": [
+                                            "14:00",
+                                            "14:50"
+                                        ],
+                                        "F": [
+                                            "14:00",
+                                            "14:50"
+                                        ]
+                                    },
+                                    "location": "CAMP 194"
+                                },
+                                {
+                                    "title": "Lab",
+                                    "instructor": "Graham Northup",
+                                    "occurences": {
+                                        "W": [
+                                            "11:00",
+                                            "11:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 344"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 445,
+                            "title": "Compiler Construction",
+                            "units": 3,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christino Tamon",
+                                    "occurences": {
+                                        "T": [
+                                            "14:30",
+                                            "15:45"
+                                        ],
+                                        "TH": [
+                                            "14:30",
+                                            "15:45"
+                                        ]
+                                    },
+                                    "location": "Science Center 334"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 469,
+                            "title": "Quantum Info & Computation",
+                            "units": 3,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christino Tamon",
+                                    "occurences": {
+                                        "T": [
+                                            "8:00",
+                                            "9:15"
+                                        ],
+                                        "TH": [
+                                            "8:00",
+                                            "9:15"
+                                        ]
+                                    },
+                                    "location": "Science Center 356"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 451,
+                            "title": "Intro to Mathematical Research",
+                            "units": 2,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Kathleen Kavanagh",
+                                    "occurences": {
+                                        "W": [
+                                            "13:00",
+                                            "13:50"
+                                        ],
+                                        "F": [
+                                            "13:00",
+                                            "13:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 356"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "PH",
+                            "number": 132,
+                            "title": "Physics II",
+                            "units": 4,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Ramsdell",
+                                    "occurences": {
+                                        "M": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "W": [
+                                            "10:00",
+                                            "10:50"
+                                        ],
+                                        "F": [
+                                            "10:00",
+                                            "10:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 360"
+                                },
+                                {
+                                    "title": "Lab/Recitation",
+                                    "instructor": "Matt Southhaw",
+                                    "occurences": {
+                                        "TH": [
+                                            "10:00",
+                                            "11:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 272"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "PHIL",
+                            "number": 222,
+                            "title": "Philosophy for Life",
+                            "units": 3,
+                            "letterGrade": "A-",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Michael Garcia",
+                                    "occurences": {
+                                        "T": [
+                                            "13:00",
+                                            "14:15"
+                                        ],
+                                        "TH": [
+                                            "13:00",
+                                            "14:15"
+                                        ]
+                                    },
+                                    "location": "Educational Res Ctr 102"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "semester": "Fall",
+                    "year": 2019,
+                    "courses": [
+                        {
+                            "subject": "COMM",
+                            "number": 310,
+                            "title": "Mass Media and Society",
+                            "units": 3,
+                            "letterGrade": "A"
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 411,
+                            "title": "DS in Applied Comp Sci",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Research",
+                                    "instructor": "Natasha Banerjee",
+                                    "location": "TARS Lab"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 447,
+                            "title": "Computer Algorithms",
+                            "units": 3,
+                            "letterGrade": "B+",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Christino Tamon",
+                                    "occurences": {
+                                        "T": [
+                                            "8:00",
+                                            "9:15"
+                                        ],
+                                        "TH": [
+                                            "8:00",
+                                            "9:15"
+                                        ]
+                                    },
+                                    "location": "Science Center 356"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 499,
+                            "title": "Professional Experience",
+                            "units": 0,
+                            "letterGrade": "P"
+                        },
+                        {
+                            "subject": "CS",
+                            "number": 652,
+                            "title": "Computer Vision",
+                            "units": 3,
+                            "letterGrade": "LW",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Natasha Banerjee",
+                                    "occurences": {
+                                        "T": [
+                                            "9:30",
+                                            "10:45"
+                                        ],
+                                        "TH": [
+                                            "9:30",
+                                            "10:45"
+                                        ]
+                                    },
+                                    "location": "Rowley Lab 142"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "EE",
+                            "number": 491,
+                            "title": "DS in Electrical & Comp Eng",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Research",
+                                    "instructor": "Stephanie Schuckers",
+                                    "location": "CITeR Lab"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 311,
+                            "title": "Abstract Algebra",
+                            "units": 3,
+                            "letterGrade": "A",
+                            "gatherings": [
+                                {
+                                    "title": "Lecture",
+                                    "instructor": "Don Mallawa Arachchi",
+                                    "occurences": {
+                                        "M": [
+                                            "12:00",
+                                            "12:50"
+                                        ],
+                                        "W": [
+                                            "12:00",
+                                            "12:50"
+                                        ],
+                                        "F": [
+                                            "12:00",
+                                            "12:50"
+                                        ]
+                                    },
+                                    "location": "Science Center 346"
+                                }
+                            ]
+                        },
+                        {
+                            "subject": "MA",
+                            "number": 499,
+                            "title": "Professional Experience",
+                            "units": 0,
+                            "letterGrade": "P"
+                        }
+                    ]
                 }
             ]
         }
