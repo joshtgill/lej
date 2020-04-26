@@ -57,15 +57,45 @@ class IOService:
 
 
     def displayTransferredCourses(self, undergrad):
+        table = []
         for transferredCourse in undergrad.transferredCourses:
-            print('{} ({} {}) - units: {}'.format(transferredCourse.title, transferredCourse.subject,
-                                                  transferredCourse.number, transferredCourse.units))
+            table.append(['{} {}'.format(transferredCourse.subject, transferredCourse.number), transferredCourse.title, transferredCourse.units])
+
+        self.printTable(['Course', 'Title', 'Units'], table, 10)
 
 
     def displayPastTerms(self, undergrad):
+        table = []
         for pastTerm in undergrad.pastTerms:
-            print('{} - {} units on {} courses for a {} GPA'.format(pastTerm.getTitle(), self.calcService.countTermUnits(pastTerm),
-                                                                    len(pastTerm.courses), self.calcService.calcTermGpa(pastTerm)))
             for pastCourse in pastTerm.courses:
-                print('\t{} ({} {}) - units: {}, grade: {}'.format(pastCourse.title, pastCourse.subject, pastCourse.number,
-                                                                pastCourse.units, pastCourse.letterGrade))
+                table.append(['{} {}'.format(pastCourse.subject, pastCourse.number), pastCourse.title, pastCourse.units, pastCourse.letterGrade, pastTerm.getTitle()])
+
+        self.printTable(['Course', 'Title', 'Units', 'Grade', 'Term'], table, 10)
+
+
+    def printTable(self, header, table, spaces):
+        # Cast all table elements to string
+        for rowIndex in range(len(table)):
+            for colIndex in range(len(table[rowIndex])):
+                table[rowIndex][colIndex] = str(table[rowIndex][colIndex])
+
+        # Find and store the longest element in each column
+        maxColElementLengths = []
+        for colIndex in range(len(header)):
+            maxColElementLength = 0
+            for row in table:
+                maxColElementLength = len(row[colIndex]) if len(row[colIndex]) > maxColElementLength else maxColElementLength
+            maxColElementLengths.append(maxColElementLength)
+
+        # Print formatted header
+        for colIndex in range(len(header)):
+            print(header[colIndex], end=' ' * (maxColElementLengths[colIndex] - len(header[colIndex]) + spaces))
+        print()
+
+        # Print formatted data
+        for row in table:
+            colIndex = 0
+            while colIndex < len(row):
+                print(row[colIndex], end=' ' * (maxColElementLengths[colIndex] - len(row[colIndex]) + spaces))
+                colIndex += 1
+            print()
