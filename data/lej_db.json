@@ -5,6 +5,13 @@
             "password": "pass1",
             "firstName": "Josh",
             "lastName": "Gillette",
+            "majors": [
+                "Computer Science",
+                "Mathematics"
+            ],
+            "minors": [
+                "Electrical Engineering"
+            ],
             "transferredCourses": [
                 {
                     "subject": "POL",

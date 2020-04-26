@@ -7,6 +7,8 @@ class Undergrad(User):
 
     def __init__(self, email = '', password = '', firstName = '', lastName = ''):
         super().__init__(email, password, firstName, lastName)
+        self.majors = []
+        self.minors = []
         self.transferredCourses = []
         self.pastTerms = []
 
@@ -32,6 +34,8 @@ class Undergrad(User):
 
     def deserialize(self, data):
         super().deserialize(data)
+        self.majors = data.get('majors')
+        self.minors = data.get('minors')
         for transferredCourseData in data.get('transferredCourses'):
             transferredCourse = Course()
             transferredCourse.deserialize(transferredCourseData)
