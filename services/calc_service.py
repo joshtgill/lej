@@ -19,7 +19,7 @@ class CalcService:
     def countTermUnits(self, term, onlyGraded=False):
         termUnits = 0
         for course in term.courses:
-            if not onlyGraded or course.letterGrade != 'P':
+            if not onlyGraded or (course.letterGrade != 'P' and course.letterGrade != 'LW'):
                 termUnits += course.units
 
         return termUnits
