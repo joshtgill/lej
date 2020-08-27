@@ -5,8 +5,8 @@ from academics.term.past_term import PastTerm
 
 class Undergrad(User):
 
-    def __init__(self, uuid=None, firstName='', lastName='', email='', majors=[], minors=[]):
-        super().__init__(uuid, firstName, lastName, email)
+    def __init__(self, uuid=None, firstName='', lastName='', email='', typee=-1, majors=[], minors=[]):
+        super().__init__(uuid, firstName, lastName, email, typee)
         self.majors = majors
         self.minors = minors
         self.transferredCourses = []

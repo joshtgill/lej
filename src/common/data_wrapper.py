@@ -12,6 +12,14 @@ class DataWrapper:
         return None
 
 
+    def getAccountTypeFromUuid(self, uuid):
+        for dataUuid, userData, in self.dataInterface.get('USERS', 'users', {}).items():
+            if dataUuid == uuid:
+                return userData.get('type')
+
+        return None
+
+
     def getUserDataFromUuid(self, uuid):
         return self.dataInterface.get('USERS', 'users/{}'.format(uuid), {})
 
