@@ -47,6 +47,7 @@ class Lej:
     def viewProfile(self):
         self.ioInterface.println('Name: {} {}'.format(self.accountManager.user.firstName, self.accountManager.user.lastName))
         self.ioInterface.println('Email: {}'.format(self.accountManager.user.email))
+        self.ioInterface.println('ID: {}'.format(self.accountManager.user.id))
         majorTitles = [self.dataWrapper.getMajorTitleFromUuid(majorUuid) for majorUuid in self.accountManager.user.majors]
         self.ioInterface.println('Major(s): {}'.format(', '.join(majorTitles)))
         minorTitles = [self.dataWrapper.getMinorTitleFromUuid(minorUuid) for minorUuid in self.accountManager.user.minors]

@@ -5,8 +5,8 @@ from academics.term.past_term import PastTerm
 
 class Undergrad(User):
 
-    def __init__(self, uuid=None, firstName='', lastName='', email='', typee=-1, majors=[], minors=[]):
-        super().__init__(uuid, firstName, lastName, email, typee)
+    def __init__(self, uuid=None, idd='', firstName='', lastName='', email='', typee=-1, majors=[], minors=[]):
+        super().__init__(uuid, idd, firstName, lastName, email, typee)
         self.majors = majors
         self.minors = minors
         self.transferredCourses = []
@@ -23,16 +23,16 @@ class Undergrad(User):
 
 
     def deserialize(self, uuid, data):
-        self.uuid = uuid
-        self.firstName = data.get('firstName')
-        self.lastName = data.get('lastName')
-        self.email = data.get('email')
+        super().deserialize(data)
+
         self.majors = data.get('majors')
         self.minors = data.get('minors')
+
         for transferredCourseData in data.get('transferredCourses'):
             transferredCourse = Course()
             transferredCourse.deserialize(transferredCourseData)
             self.transferredCourses.append(transferredCourse)
+
         for pastTermData in data.get('pastTerms'):
             pastTerm = PastTerm()
             pastTerm.deserialize(pastTermData)

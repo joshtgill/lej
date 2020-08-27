@@ -13,6 +13,7 @@ class AccountManager:
 
     def createAccount(self):
         # Retrieve general account info
+        idd = self.ioInterface.getInput('Enter ID: ')
         firstName = self.ioInterface.getInput('Enter first name: ')
         lastName = self.ioInterface.getInput('Enter last name: ')
         email = self.ioInterface.getInput('Enter email: ')
@@ -36,7 +37,7 @@ class AccountManager:
             if len(minorTitlesOptions) not in minorSelections: # If 'None' was selected, keep selected minors empty
                 selectedMinorUuids = [self.dataWrapper.getMinorUuidFromTitle(minorTitlesOptions[userSelection - 1]) for userSelection in minorSelections]
 
-            self.user = Undergrad(uuid.uuid4(), firstName, lastName, email, accountType, selectedMajorUuids, selectedMinorUuids)
+            self.user = Undergrad(uuid.uuid4(), idd, firstName, lastName, email, accountType, selectedMajorUuids, selectedMinorUuids)
 
         # Set and notify
         self.dataInterface.sett('USERS', 'users/{}'.format(self.user.uuid), self.user.serialize())
