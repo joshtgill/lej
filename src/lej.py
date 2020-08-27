@@ -32,19 +32,16 @@ class Lej:
             menuActions[userSelection - 1]()
 
 
-
     def createAccount(self):
         self.navigationIndex += 1 if self.accountManager.createAccount() else 0
 
         self.ioInterface.println(additionalNewLines=1)
 
 
-
     def login(self):
         self.navigationIndex += 1 if self.accountManager.login() else 0
 
         self.ioInterface.println(additionalNewLines=1)
-
 
 
     def viewProfile(self):
@@ -60,7 +57,6 @@ class Lej:
         self.ioInterface.println(additionalNewLines=1)
 
 
-
     def viewAcademicHistory(self):
         self.navigationIndex += 1
 
@@ -70,7 +66,6 @@ class Lej:
             self.ioInterface.println('{}{} {} ({})'.format(transferredCourse.subject, transferredCourse.number, transferredCourse.title, transferredCourse.units))
 
         self.ioInterface.println(additionalNewLines=1)
-
 
 
     def viewPastTerms(self):
