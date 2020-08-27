@@ -1,4 +1,4 @@
-class AcademicCalculator:
+class Calculator:
 
     def __init__(self):
         self.letterGradeValueDirectory = {'A+': 4.0, 'A': 4.0, 'A-': 3.6667,

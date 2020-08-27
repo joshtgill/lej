@@ -4,7 +4,7 @@ from common.data_interface import DataInterface
 from common.data_wrapper import DataWrapper
 from common.io_interface import IOInterface
 from account.account_manager import AccountManager
-from academics.academic_calculator import AcademicCalculator
+from academics.calculator import Calculator
 
 
 class Lej:
@@ -15,7 +15,7 @@ class Lej:
         self.dataWrapper = DataWrapper(self.dataInterface)
         self.ioInterface = IOInterface()
         self.accountManager = AccountManager(self.dataInterface, self.dataWrapper, self.ioInterface)
-        self.academicCalculator = AcademicCalculator()
+        self.calculator = Calculator()
         self.navigation = [{'Create account': self.createAccount, 'Login': self.login, 'Exit': self.back},
                            {'View profile': self.viewProfile, 'View academic history': self.viewAcademicHistory, 'Back': self.back},
                            {'View transferred courses': self.viewTransferredCourses, 'View past terms': self.viewPastTerms, 'Back': self.back}]
@@ -54,7 +54,7 @@ class Lej:
         self.ioInterface.println('Major(s): {}'.format(', '.join(majorTitles)))
         minorTitles = [self.dataWrapper.getMinorTitleFromUuid(minorUuid) for minorUuid in self.accountManager.user.minors]
         self.ioInterface.println('Minor(s): {}'.format(', '.join(minorTitles)))
-        cumulativeGpa = self.academicCalculator.calculateCumulativeGpa(self.accountManager.user)
+        cumulativeGpa = self.calculator.calculateCumulativeGpa(self.accountManager.user)
         self.ioInterface.println('Cumulative GPA: {}'.format(round(cumulativeGpa, 3)))
 
         self.ioInterface.println(additionalNewLines=1)
@@ -76,8 +76,8 @@ class Lej:
     def viewPastTerms(self):
         for pastTerm in self.accountManager.user.pastTerms:
             self.ioInterface.println('{} ({}): {}'.format(pastTerm.getTitle(),
-                                                          self.academicCalculator.countTermUnits(pastTerm),
-                                                          round(self.academicCalculator.calculateTermGpa(pastTerm), 3)))
+                                                          self.calculator.countTermUnits(pastTerm),
+                                                          round(self.calculator.calculateTermGpa(pastTerm), 3)))
             for course in pastTerm.courses:
                 self.ioInterface.println('{}{} {} ({}): {}'.format(course.subject, course.number, course.title, course.units, course.letterGrade))
             self.ioInterface.println()
