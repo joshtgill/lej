@@ -1,4 +1,4 @@
-from past_course import PastCourse
+from academics.course.course import Course
 
 
 class Term:
@@ -6,7 +6,6 @@ class Term:
     def __init__(self):
         self.semester = ''
         self.year = 0
-        self.courses = []
 
 
     def getTitle(self):
@@ -20,7 +19,3 @@ class Term:
     def deserialize(self, data):
         self.semester = data.get('semester')
         self.year = int(data.get('year'))
-        for pastCourseData in data.get('courses'):
-            pastCourse = PastCourse()
-            pastCourse.deserialize(pastCourseData)
-            self.courses.append(pastCourse)

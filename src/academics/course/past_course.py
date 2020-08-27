@@ -1,4 +1,4 @@
-from course import Course
+from academics.course.course import Course
 
 
 class PastCourse(Course):
@@ -9,10 +9,7 @@ class PastCourse(Course):
 
 
     def serialize(self):
-        courseData = super().serialize()
-        courseData.update({'letterGrade': self.letterGrade})
-
-        return courseData
+        return super().serialize().update({'letterGrade': self.letterGrade})
 
 
     def deserialize(self, data):
