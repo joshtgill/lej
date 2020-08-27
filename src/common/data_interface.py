@@ -5,7 +5,8 @@ class DataInterface:
 
     def __init__(self, fileInterface):
         self.fileInterface = fileInterface
-        self.dataDirectory = {'USERS': 'data/users.json', 'MAJORS': 'data/majors.json', 'MINORS': 'data/minors.json'} # name: path
+        self.dataDirectory = {'SETTINGS': 'data/settings.json', 'USERS': 'data/users.json',
+                              'MAJORS': 'data/majors.json', 'MINORS': 'data/minors.json'}
 
 
     def sett(self, dataName, path, value):

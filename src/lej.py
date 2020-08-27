@@ -15,7 +15,7 @@ class Lej:
         self.dataWrapper = DataWrapper(self.dataInterface)
         self.ioInterface = IOInterface()
         self.accountManager = AccountManager(self.dataInterface, self.dataWrapper, self.ioInterface)
-        self.calculator = Calculator()
+        self.calculator = Calculator(self.dataInterface)
         self.navigation = [{'Create account': self.createAccount, 'Login': self.login, 'Exit': self.back},
                            {'View profile': self.viewProfile, 'View academic history': self.viewAcademicHistory, 'Back': self.back},
                            {'View transferred courses': self.viewTransferredCourses, 'View past terms': self.viewPastTerms, 'Back': self.back}]

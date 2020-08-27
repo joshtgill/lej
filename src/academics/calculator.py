@@ -1,11 +1,7 @@
 class Calculator:
 
-    def __init__(self):
-        self.letterGradeValueDirectory = {'A+': 4.0, 'A': 4.0, 'A-': 3.6667,
-                                          'B+': 3.3333, 'B': 3.0, 'B-': 2.6667,
-                                          'C+': 2.3333, 'C': 2.0, 'C-': 1.6667,
-                                          'D+': 1.3333, 'D': 1.0, 'D-': 0.6667,
-                                          'D': 0.3333, 'F': 0.0}
+    def __init__(self, dataInterface):
+        self.dataInterface = dataInterface
 
 
     def calculateCumulativeGpa(self, undergrad):
@@ -29,7 +25,7 @@ class Calculator:
         scoreCount = 0
         for course in term.courses:
             try:
-                scoreCount += course.units * self.letterGradeValueDirectory.get(course.letterGrade)
+                scoreCount += course.units * self.dataInterface.get('SETTINGS', 'letterGradeValueDirectory').get(course.letterGrade)
             except TypeError:
                 continue
 
