@@ -15,7 +15,6 @@ class Undergrad(User):
 
     def serialize(self):
         data = super().serialize()
-
         data.update({'majors': self.majors})
         data.update({'minors': self.minors})
 
@@ -23,7 +22,7 @@ class Undergrad(User):
 
 
     def deserialize(self, uuid, data):
-        super().deserialize(data)
+        super().deserialize(uuid, data)
 
         self.majors = data.get('majors')
         self.minors = data.get('minors')

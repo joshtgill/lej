@@ -13,8 +13,8 @@ class User:
         return {'id': self.id, 'firstName': self.firstName, 'lastName': self.lastName, 'email': self.email, 'type': self.type}
 
 
-    def deserialize(self, data):
-        self.uuid = data.get('uuid')
+    def deserialize(self, uuid, data):
+        self.uuid = uuid
         self.id = data.get('id')
         self.firstName = data.get('firstName')
         self.lastName = data.get('lastName')

@@ -5,23 +5,43 @@ class DataWrapper:
 
 
     def getUserUuidFromEmail(self, email):
-        for uuid, userData in self.dataInterface.get('USERS', 'users', {}).items():
-            if userData.get('email') == email:
-                return uuid
+        for accountTypeKey in self.dataInterface.get('USERS', '', {}):
+            for uuid, userData in self.dataInterface.get('USERS', accountTypeKey, {}).items():
+                if userData.get('email') == email:
+                    return uuid
 
         return None
 
 
     def getAccountTypeFromUuid(self, uuid):
-        for dataUuid, userData, in self.dataInterface.get('USERS', 'users', {}).items():
-            if dataUuid == uuid:
-                return userData.get('type')
+        for accountTypeKey in self.dataInterface.get('USERS', '', {}):
+            for dataUuid, userData, in self.dataInterface.get('USERS', accountTypeKey, {}).items():
+                if dataUuid == uuid:
+                    return userData.get('type')
 
         return None
 
 
     def getUserDataFromUuid(self, uuid):
-        return self.dataInterface.get('USERS', 'users/{}'.format(uuid), {})
+        for accountTypeKey in self.dataInterface.get('USERS', '', {}):
+            for dataUuid, userData in self.dataInterface.get('USERS', accountTypeKey, {}).items():
+                if dataUuid == uuid:
+                    return userData
+
+        return None
+
+
+    def getAllUndergradNames(self):
+        return ['{} {}'.format(userData.get('firstName'), userData.get('lastName'))
+                               for _, userData in self.dataInterface.get('USERS', '3/', {}).items()]
+
+
+    def getUndergradUuidFromName(self, name):
+        for dataUuid, userData in self.dataInterface.get('USERS', '3/', {}).items():
+            if '{} {}'.format(userData.get('firstName'), userData.get('lastName')) == name:
+                return dataUuid
+
+        return None
 
 
     def getAllMajorTitles(self):
@@ -62,3 +82,7 @@ class DataWrapper:
                 return dataUuid
 
         return None
+
+
+    def getValueFromLetterGrade(self, letterGrade):
+        return self.dataInterface.get('SETTINGS', 'letterGradeValueDirectory').get(letterGrade)

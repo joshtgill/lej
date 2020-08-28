@@ -1,4 +1,5 @@
 import uuid
+from account.adviser import Adviser
 from account.undergrad import Undergrad
 
 
@@ -20,30 +21,42 @@ class AccountManager:
 
         # Determine account type
         accountType = self.ioInterface.handleMenuInput('Select account type', ['Admin', 'Adviser', 'Undergrad'])
-        if accountType == 3: # Undergraduate
-            # Retrieve major(s)
-            majorTitlesOptions = self.dataWrapper.getAllMajorTitles()
-            majorTitlesOptions.append('None')
-            majorSelections = self.ioInterface.handleMenuInput('Select major', majorTitlesOptions, True)
-            selectedMajorUuids = []
-            if len(majorTitlesOptions) not in majorSelections: # If 'None' was selected, keep selected majors empty
-                selectedMajorUuids = [self.dataWrapper.getMajorUuidFromTitle(majorTitlesOptions[userSelection - 1]) for userSelection in majorSelections]
+        if accountType == 2: # Adviser
+            # Retrieve undergrad(s)
+            selectedUndergradUuids = self.selectionHelper(self.dataWrapper.getAllUndergradNames, 'Select undergrad(s)', self.dataWrapper.getUndergradUuidFromName)
 
-            # Retrieve minor(s)
-            minorTitlesOptions = self.dataWrapper.getAllMinorTitles()
-            minorTitlesOptions.append('None')
-            minorSelections = self.ioInterface.handleMenuInput('Select minor', minorTitlesOptions, True)
-            selectedMinorUuids = []
-            if len(minorTitlesOptions) not in minorSelections: # If 'None' was selected, keep selected minors empty
-                selectedMinorUuids = [self.dataWrapper.getMinorUuidFromTitle(minorTitlesOptions[userSelection - 1]) for userSelection in minorSelections]
+            # Set and notify
+            self.user = Adviser(uuid.uuid4(), idd, firstName, lastName, email, accountType, selectedUndergradUuids)
 
+        elif accountType == 3: # Undergrad
+            # Retrieve major(s) and minor(s)
+            selectedMajorUuids = self.selectionHelper(self.dataWrapper.getAllMajorTitles, 'Select major(s)', self.dataWrapper.getMajorUuidFromTitle)
+            selectedMinorUuids = self.selectionHelper(self.dataWrapper.getAllMinorTitles, 'Select minor(s)', self.dataWrapper.getMinorUuidFromTitle)
+
+            # Set and notify
             self.user = Undergrad(uuid.uuid4(), idd, firstName, lastName, email, accountType, selectedMajorUuids, selectedMinorUuids)
 
-        # Set and notify
-        self.dataInterface.sett('USERS', 'users/{}'.format(self.user.uuid), self.user.serialize())
-        self.ioInterface.println('User created.')
+        self.dataInterface.sett('USERS', '{}/{}'.format(accountType, self.user.uuid), self.user.serialize())
+        self.ioInterface.println('Adviser account created.')
 
         return True
+
+
+    def selectionHelper(self, getOptionsFunction, menuInputLabel, getValueFunction, noneOption=True):
+        # Get the options, adding 'None' if specified
+        options = getOptionsFunction()
+        if noneOption:
+            options.append('None')
+
+        # Get the numeric selections from user
+        selections = self.ioInterface.handleMenuInput(menuInputLabel, options, True)
+
+        # Based on selections, get the desired values
+        selectedValues = []
+        if not noneOption or len(options) not in selections:
+            selectedValues = [getValueFunction(options[selection - 1]) for selection in selections]
+
+        return selectedValues
 
 
     def login(self):
@@ -54,7 +67,9 @@ class AccountManager:
             return False
 
         accountType = self.dataWrapper.getAccountTypeFromUuid(uuid)
-        if accountType == 3:
+        if accountType == 2:
+            self.user = Adviser()
+        elif accountType == 3:
             self.user = Undergrad()
 
         self.user.deserialize(uuid, self.dataWrapper.getUserDataFromUuid(uuid))
