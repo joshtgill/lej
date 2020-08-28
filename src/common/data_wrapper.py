@@ -22,6 +22,7 @@ class DataWrapper:
         return None
 
 
+    # TODO: Optimize FromUuid methods
     def getUserDataFromUuid(self, uuid):
         for accountTypeKey in self.dataInterface.get('USERS', '', {}):
             for dataUuid, userData in self.dataInterface.get('USERS', accountTypeKey, {}).items():
@@ -36,9 +37,15 @@ class DataWrapper:
                                for _, userData in self.dataInterface.get('USERS', '3/', {}).items()]
 
 
+    def getUndergradNameFromUuid(self, uuid):
+        undergradData = self.dataInterface.get('USERS', '3/' + uuid)
+
+        return '{} {}'.format(undergradData.get('firstName'), undergradData.get('lastName'))
+
+
     def getUndergradUuidFromName(self, name):
-        for dataUuid, userData in self.dataInterface.get('USERS', '3/', {}).items():
-            if '{} {}'.format(userData.get('firstName'), userData.get('lastName')) == name:
+        for dataUuid, undergradData in self.dataInterface.get('USERS', '3/', {}).items():
+            if '{} {}'.format(undergradData.get('firstName'), undergradData.get('lastName')) == name:
                 return dataUuid
 
         return None

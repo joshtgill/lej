@@ -16,9 +16,7 @@ class Lej:
         self.ioInterface = IOInterface()
         self.accountManager = AccountManager(self.dataInterface, self.dataWrapper, self.ioInterface)
         self.calculator = Calculator(self.dataInterface, self.dataWrapper)
-        self.navigation = [{'Create account': self.createAccount, 'Login': self.login, 'Exit': self.back},
-                           {'View profile': self.viewProfile, 'View academic history': self.viewAcademicHistory, 'Back': self.back},
-                           {'View transferred courses': self.viewTransferredCourses, 'View past terms': self.viewPastTerms, 'Back': self.back}]
+        self.navigation = [{'Create account': self.createAccount, 'Login': self.login, 'Exit': self.back}]
         self.navigationIndex = 0
 
 
@@ -39,12 +37,30 @@ class Lej:
 
 
     def login(self):
-        self.navigationIndex += 1 if self.accountManager.login() else 0
+        if self.accountManager.login():
+            self.updateNavigation()
+            self.navigationIndex += 1
 
         self.ioInterface.println(additionalNewLines=1)
 
 
-    def viewProfile(self):
+    def updateNavigation(self):
+        if self.accountManager.user.type == 2:
+            self.navigation.extend([{'View profile': self.viewAdviserProfile, 'Back': self.back}])
+        elif self.accountManager.user.type == 3:
+            self.navigation.extend([{'View profile': self.viewUndergradProfile, 'View academic history': self.viewAcademicHistory, 'Back': self.back},
+                                    {'View transferred courses': self.viewTransferredCourses, 'View past terms': self.viewPastTerms, 'Back': self.back}])
+
+
+    def viewAdviserProfile(self):
+        self.ioInterface.println('Name: {} {}'.format(self.accountManager.user.firstName, self.accountManager.user.lastName))
+        self.ioInterface.println('Email: {}'.format(self.accountManager.user.email))
+        self.ioInterface.println('ID: {}'.format(self.accountManager.user.id))
+        undergradNames = [self.dataWrapper.getUndergradNameFromUuid(undergradUuid) for undergradUuid in self.accountManager.user.undergrads]
+        self.ioInterface.println('Undergrad(s): {}'.format(', '.join(undergradNames)))
+
+
+    def viewUndergradProfile(self):
         self.ioInterface.println('Name: {} {}'.format(self.accountManager.user.firstName, self.accountManager.user.lastName))
         self.ioInterface.println('Email: {}'.format(self.accountManager.user.email))
         self.ioInterface.println('ID: {}'.format(self.accountManager.user.id))
@@ -84,5 +100,7 @@ class Lej:
     def back(self):
         if self.navigationIndex == 0:
             sys.exit()
+        elif self.navigationIndex == 1:
+            self.navigation = [{'Create account': self.createAccount, 'Login': self.login, 'Exit': self.back}]
 
         self.navigationIndex -= 1 # TODO: Will not always work
