@@ -53,6 +53,4 @@ class IOInterface:
         # Get menu input
         userSelection = self.getNumberInput('Selection #: ', 1, len(options), multiple)
 
-        self.println()
-
         return userSelection

@@ -28,6 +28,7 @@ class Lej:
 
             # Get user selection and launch corresponding action
             userSelection = self.ioInterface.handleMenuInput('Select action', menuOptions)
+            self.ioInterface.println()
             menuActions[userSelection - 1]()
 
 

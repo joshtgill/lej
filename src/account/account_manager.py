@@ -37,6 +37,7 @@ class AccountManager:
             self.user = Undergrad(uuid.uuid4(), idd, firstName, lastName, email, accountType, selectedMajorUuids, selectedMinorUuids)
 
         self.dataInterface.sett('USERS', '{}/{}'.format(accountType, self.user.uuid), self.user.serialize())
+        self.ioInterface.println()
         self.ioInterface.println('Account created.')
 
         return True

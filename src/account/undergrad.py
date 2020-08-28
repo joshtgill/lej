@@ -5,7 +5,7 @@ from academics.term.past_term import PastTerm
 
 class Undergrad(User):
 
-    def __init__(self, uuid=None, firstName='', lastName='', email='', typee=-1, idd='', majors=[], minors=[]):
+    def __init__(self, uuid=None, idd='', firstName='', lastName='', email='', typee=-1, majors=[], minors=[]):
         super().__init__(uuid, firstName, lastName, email, typee)
         self.id = idd
         self.majors = majors
