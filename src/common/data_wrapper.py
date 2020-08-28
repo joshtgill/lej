@@ -71,6 +71,10 @@ class DataWrapper:
         return None
 
 
+    def createMajor(self, uuid, title):
+        self.dataInterface.sett('MAJORS', '{}/title/'.format(uuid), title)
+
+
     def getAllMinorTitles(self):
         return [minorData.get('title') for _, minorData in self.dataInterface.get('MINORS', '', {}).items()]
 
@@ -89,6 +93,10 @@ class DataWrapper:
                 return dataUuid
 
         return None
+
+
+    def createMinor(self, uuid, title):
+        self.dataInterface.sett('MINORS', '{}/title/'.format(uuid), title)
 
 
     def getValueFromLetterGrade(self, letterGrade):

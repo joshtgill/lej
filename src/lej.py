@@ -5,6 +5,7 @@ from common.data_wrapper import DataWrapper
 from common.io_interface import IOInterface
 from account.account_manager import AccountManager
 from academics.calculator import Calculator
+import uuid
 
 
 class Lej:
@@ -57,11 +58,17 @@ class Lej:
 
 
     def createMajor(self):
-        pass
+        majorTitle = self.ioInterface.getInput('Enter major title: ')
+        self.dataWrapper.createMajor(uuid.uuid4(), majorTitle)
+
+        self.ioInterface.println('Major created.', additionalNewLines=2)
 
 
     def createMinor(self):
-        pass
+        minorTitle = self.ioInterface.getInput('Enter minor title: ')
+        self.dataWrapper.createMinor(uuid.uuid4(), minorTitle)
+
+        self.ioInterface.println('Minor created.', additionalNewLines=2)
 
 
     def viewAdviserProfile(self):
