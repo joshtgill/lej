@@ -31,7 +31,9 @@ class Lej:
 
 
     def createAccount(self):
-        self.navigationIndex += 1 if self.accountManager.createAccount() else 0
+        if self.accountManager.createAccount():
+            self.updateNavigation()
+            self.navigationIndex += 1
 
         self.ioInterface.println(additionalNewLines=1)
 
@@ -45,11 +47,21 @@ class Lej:
 
 
     def updateNavigation(self):
-        if self.accountManager.user.type == 2:
+        if self.accountManager.user.type == 1:
+            self.navigation.extend([{'Create major': self.createMajor, 'Create minor': self.createMinor}])
+        elif self.accountManager.user.type == 2:
             self.navigation.extend([{'View profile': self.viewAdviserProfile, 'Back': self.back}])
         elif self.accountManager.user.type == 3:
             self.navigation.extend([{'View profile': self.viewUndergradProfile, 'View academic history': self.viewAcademicHistory, 'Back': self.back},
                                     {'View transferred courses': self.viewTransferredCourses, 'View past terms': self.viewPastTerms, 'Back': self.back}])
+
+
+    def createMajor(self):
+        pass
+
+
+    def createMinor(self):
+        pass
 
 
     def viewAdviserProfile(self):
