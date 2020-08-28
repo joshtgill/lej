@@ -5,8 +5,9 @@ from academics.term.past_term import PastTerm
 
 class Undergrad(User):
 
-    def __init__(self, uuid=None, idd='', firstName='', lastName='', email='', typee=-1, majors=[], minors=[]):
-        super().__init__(uuid, idd, firstName, lastName, email, typee)
+    def __init__(self, uuid=None, firstName='', lastName='', email='', typee=-1, idd='', majors=[], minors=[]):
+        super().__init__(uuid, firstName, lastName, email, typee)
+        self.id = idd
         self.majors = majors
         self.minors = minors
         self.transferredCourses = []
@@ -15,6 +16,7 @@ class Undergrad(User):
 
     def serialize(self):
         data = super().serialize()
+        data.update({'id': self.id})
         data.update({'majors': self.majors})
         data.update({'minors': self.minors})
 
@@ -24,6 +26,7 @@ class Undergrad(User):
     def deserialize(self, uuid, data):
         super().deserialize(uuid, data)
 
+        self.id = data.get('id')
         self.majors = data.get('majors')
         self.minors = data.get('minors')
 

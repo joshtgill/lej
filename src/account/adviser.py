@@ -3,8 +3,8 @@ from account.user import User
 
 class Adviser(User):
 
-    def __init__(self, uuid=None, idd='', firstName='', lastName='', email='', typee=-1, undergrads=[]):
-        super().__init__(uuid, idd, firstName, lastName, email, typee)
+    def __init__(self, uuid=None, firstName='', lastName='', email='', typee=-1, undergrads=[]):
+        super().__init__(uuid, firstName, lastName, email, typee)
         self.undergrads = undergrads
 
 

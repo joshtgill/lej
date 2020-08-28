@@ -14,7 +14,6 @@ class AccountManager:
 
     def createAccount(self):
         # Retrieve general account info
-        idd = self.ioInterface.getInput('Enter ID: ')
         firstName = self.ioInterface.getInput('Enter first name: ')
         lastName = self.ioInterface.getInput('Enter last name: ')
         email = self.ioInterface.getInput('Enter email: ')
@@ -26,10 +25,11 @@ class AccountManager:
             selectedUndergradUuids = self.selectionHelper(self.dataWrapper.getAllUndergradNames, 'Select undergrad(s)', self.dataWrapper.getUndergradUuidFromName)
 
             # Set and notify
-            self.user = Adviser(uuid.uuid4(), idd, firstName, lastName, email, accountType, selectedUndergradUuids)
+            self.user = Adviser(uuid.uuid4(), firstName, lastName, email, accountType, selectedUndergradUuids)
 
         elif accountType == 3: # Undergrad
-            # Retrieve major(s) and minor(s)
+            # Retrieve student ID, major(s), and minor(s)
+            idd = self.ioInterface.getInput('Enter ID: ')
             selectedMajorUuids = self.selectionHelper(self.dataWrapper.getAllMajorTitles, 'Select major(s)', self.dataWrapper.getMajorUuidFromTitle)
             selectedMinorUuids = self.selectionHelper(self.dataWrapper.getAllMinorTitles, 'Select minor(s)', self.dataWrapper.getMinorUuidFromTitle)
 

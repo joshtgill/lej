@@ -55,9 +55,10 @@ class Lej:
     def viewAdviserProfile(self):
         self.ioInterface.println('Name: {} {}'.format(self.accountManager.user.firstName, self.accountManager.user.lastName))
         self.ioInterface.println('Email: {}'.format(self.accountManager.user.email))
-        self.ioInterface.println('ID: {}'.format(self.accountManager.user.id))
         undergradNames = [self.dataWrapper.getUndergradNameFromUuid(undergradUuid) for undergradUuid in self.accountManager.user.undergrads]
         self.ioInterface.println('Undergrad(s): {}'.format(', '.join(undergradNames)))
+
+        self.ioInterface.println(additionalNewLines=1)
 
 
     def viewUndergradProfile(self):
