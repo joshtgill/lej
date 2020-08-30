@@ -85,6 +85,8 @@ class Lej:
         self.ioInterface.println('Name: {} {}'.format(self.accountManager.user.firstName, self.accountManager.user.lastName))
         self.ioInterface.println('Email: {}'.format(self.accountManager.user.email))
         self.ioInterface.println('ID: {}'.format(self.accountManager.user.id))
+        adviserNames = [self.dataWrapper.getAdviserNameFromUuid(adviserUuid) for adviserUuid in self.accountManager.user.advisers]
+        self.ioInterface.println('Adviser(s): {}'.format(', '.join(adviserNames)))
         majorTitles = [self.dataWrapper.getMajorTitleFromUuid(majorUuid) for majorUuid in self.accountManager.user.majors]
         self.ioInterface.println('Major(s): {}'.format(', '.join(majorTitles)))
         minorTitles = [self.dataWrapper.getMinorTitleFromUuid(minorUuid) for minorUuid in self.accountManager.user.minors]

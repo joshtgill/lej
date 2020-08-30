@@ -32,6 +32,12 @@ class DataWrapper:
         return None
 
 
+    def getAdviserNameFromUuid(self, uuid):
+        adviserData = self.dataInterface.get('USERS', '2/{}'.format(uuid), {})
+
+        return '{} {}'.format(adviserData.get('firstName'), adviserData.get('lastName'))
+
+
     def getAllUndergradNames(self):
         return ['{} {}'.format(userData.get('firstName'), userData.get('lastName'))
                                for _, userData in self.dataInterface.get('USERS', '3/', {}).items()]
