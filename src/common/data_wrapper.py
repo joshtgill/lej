@@ -14,20 +14,19 @@ class DataWrapper:
 
 
     def getAccountTypeFromUuid(self, uuid):
-        for accountTypeKey in self.dataInterface.get('USERS', '', {}):
-            for dataUuid, userData, in self.dataInterface.get('USERS', accountTypeKey, {}).items():
-                if dataUuid == uuid:
-                    return userData.get('type')
+        for accountType in self.dataInterface.get('USERS', '', {}):
+            userData = self.dataInterface.get('USERS', '{}/{}/'.format(accountType, uuid), None)
+            if userData:
+                return userData.get('type')
 
         return None
 
 
-    # TODO: Optimize FromUuid methods
     def getUserDataFromUuid(self, uuid):
-        for accountTypeKey in self.dataInterface.get('USERS', '', {}):
-            for dataUuid, userData in self.dataInterface.get('USERS', accountTypeKey, {}).items():
-                if dataUuid == uuid:
-                    return userData
+        for accountType in self.dataInterface.get('USERS', '', {}):
+            userData = self.dataInterface.get('USERS', '{}/{}/'.format(accountType, uuid), {})
+            if userData:
+                return userData
 
         return None
 
@@ -39,8 +38,8 @@ class DataWrapper:
 
 
     def getAllUndergradNames(self):
-        return ['{} {}'.format(userData.get('firstName'), userData.get('lastName'))
-                               for _, userData in self.dataInterface.get('USERS', '3/', {}).items()]
+        return ['{} {}'.format(undergradData.get('firstName'), undergradData.get('lastName'))
+                               for _, undergradData in self.dataInterface.get('USERS', '3/', {}).items()]
 
 
     def getUndergradNameFromUuid(self, uuid):
@@ -62,11 +61,9 @@ class DataWrapper:
 
 
     def getMajorTitleFromUuid(self, uuid):
-        for dataUuid, majorData in self.dataInterface.get('MAJORS', '', {}).items():
-            if dataUuid == uuid:
-                return majorData.get('title')
+        majorData = self.dataInterface.get('MAJORS', uuid, None)
 
-        return None
+        return majorData.get('title')
 
 
     def getMajorUuidFromTitle(self, title):
@@ -86,11 +83,9 @@ class DataWrapper:
 
 
     def getMinorTitleFromUuid(self, uuid):
-        for dataUuid, minorData in self.dataInterface.get('MINORS', '', {}).items():
-            if dataUuid == uuid:
-                return minorData.get('title')
+        minorData = self.dataInterface.get('MINORS', '', {}).items()
 
-        return None
+        return minorData.get('title')
 
 
     def getMinorUuidFromTitle(self, title):
